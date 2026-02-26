@@ -1,0 +1,155 @@
+{
+    "IMS3": {
+        "clause_id": "IMS3",
+        "archetype": "POLICY_PROCEDURE",
+        "criticality": "high",
+        "evidence_blocks": {
+            "policy_statement": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "confidentiality",
+                    "privacy of records"
+                ]
+            },
+            "access_control_procedure": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "authorized access",
+                    "role based access",
+                    "restricted access"
+                ]
+            },
+            "security_controls": {
+                "mandatory": false,
+                "weight": 0.2,
+                "signals": [
+                    "data security",
+                    "physical security",
+                    "electronic medical records",
+                    "password protection"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5,
+            "overall_compliance_threshold": 0.7
+        }
+    },
+    "IMS4": {
+        "clause_id": "IMS4",
+        "archetype": "LIFECYCLE_MANAGEMENT",
+        "criticality": "high",
+        "evidence_blocks": {
+            "retention_policy": {
+                "mandatory": true,
+                "weight": 0.5,
+                "signals": [
+                    "retention period",
+                    "record retention",
+                    "duration of storage"
+                ]
+            },
+            "destruction_process": {
+                "mandatory": true,
+                "weight": 0.5,
+                "signals": [
+                    "record destruction",
+                    "shredding",
+                    "data disposal",
+                    "secure destruction"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5
+        }
+    },
+    "CQI1": {
+        "clause_id": "CQI1",
+        "archetype": "MONITORING_IMPROVEMENT",
+        "criticality": "medium",
+        "evidence_blocks": {
+            "indicator_defined": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "quality indicator",
+                    "parameter to be monitored",
+                    "indicator"
+                ]
+            },
+            "data_collection": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "data collection",
+                    "monitoring",
+                    "measurement"
+                ]
+            },
+            "analysis": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "analysis",
+                    "review",
+                    "evaluation"
+                ]
+            },
+            "corrective_action": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "corrective action",
+                    "preventive action",
+                    "improvement"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "chain_required": true,
+            "mandatory_threshold": 0.5
+        }
+    },
+    "HRM2a": {
+        "clause_id": "HRM2a",
+        "archetype": "HR_GOVERNANCE",
+        "criticality": "medium",
+        "evidence_blocks": {
+            "job_descriptions": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "job description",
+                    "defined roles",
+                    "responsibilities of staff"
+                ]
+            },
+            "employee_records": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "employee record",
+                    "staff file",
+                    "qualification document",
+                    "leave record"
+                ]
+            },
+            "grievance_mechanism": {
+                "mandatory": false,
+                "weight": 0.2,
+                "signals": [
+                    "grievance",
+                    "disciplinary",
+                    "complaint handling"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5,
+            "overall_compliance_threshold": 0.7
+        }
+    }
+}

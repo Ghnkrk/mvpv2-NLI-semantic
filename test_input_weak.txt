@@ -1,0 +1,12 @@
+Standard Operating Procedure: Information Management
+
+1. CONFIDENTIALITY AND ACCESS CONTROL
+
+This hospital maintains confidentiality of all patient information and ensures privacy of records.
+Authorized access is granted to designated staff. The hospital enforces role based access control.
+Data security measures are in place. Password protection is enabled.
+
+2. QUALITY MONITORING
+
+The hospital identifies quality indicators. Monitoring is conducted through data collection.
+Analysis of performance data is carried out periodically.

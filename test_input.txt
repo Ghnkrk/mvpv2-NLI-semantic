@@ -1,0 +1,35 @@
+Standard Operating Procedure: Information Management and Quality Improvement
+
+1. CONFIDENTIALITY AND ACCESS CONTROL
+
+This hospital maintains strict confidentiality of all patient information and ensures privacy of records
+at all times. All medical records are stored securely with authorized access granted only to designated
+clinical and administrative staff. The hospital enforces role based access control through its Health
+Information Management System (HIMS). Restricted access is enforced via biometric and credential-based
+authentication. Data security measures include firewall protection and encryption. Physical security
+of paper-based records is maintained through locked storage areas. All electronic medical records are
+backed up daily. Password protection is enabled on all systems handling patient data.
+
+2. RECORD RETENTION AND DESTRUCTION
+
+The hospital defines a retention period of 5 years for outpatient records and 10 years for inpatient
+records. The record retention policy is reviewed annually and approved by the Medical Records Committee.
+Duration of storage is clearly documented for each record type. Upon expiry, record destruction is
+carried out through secure shredding and certified data disposal processes. Secure destruction logs
+are maintained for audit purposes.
+
+3. QUALITY MONITORING
+
+The hospital identifies quality indicators for all clinical departments. Monitoring is conducted monthly
+through data collection of clinical and operational metrics. Measurement outcomes are tracked and
+reported. Quarterly analysis and review of indicator performance is carried out. Evaluation of trends
+is documented. Where deviations are found, corrective action plans are developed and tracked. Preventive
+action mechanisms are established to avoid recurrence.
+
+4. HUMAN RESOURCE MANAGEMENT
+
+The hospital maintains a job description for every staff category clearly defining roles and
+responsibilities of staff. Employee records are maintained in individual staff files containing personal
+details, qualification documents, and employment history. Leave records are tracked through HRMS. A
+formal grievance redressal mechanism is in place for all employees. Disciplinary procedures follow a
+documented policy. Complaint handling is managed through a committee structure.

@@ -1,0 +1,131 @@
+{
+  "summary": {
+    "total_clauses": 4,
+    "compliant": 0,
+    "partial": 3,
+    "non_compliant": 1
+  },
+  "clauses": {
+    "IMS3": {
+      "status": "PARTIAL",
+      "clause_score": 0.3833,
+      "block_scores": {
+        "policy_statement": 0.5,
+        "access_control_procedure": 0.3333,
+        "security_controls": 0.25
+      },
+      "matched_evidence": {
+        "policy_statement": [
+          "confidentiality"
+        ],
+        "access_control_procedure": [
+          "role based access"
+        ],
+        "security_controls": [
+          "electronic medical records"
+        ]
+      },
+      "matched_snippets": {
+        "policy_statement": [
+          "1 Confidentiality of Medical Records"
+        ],
+        "access_control_procedure": [],
+        "security_controls": [
+          "Electronic medical records are protected through role-based access controls"
+        ]
+      }
+    },
+    "IMS4": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "retention_policy": 0.0,
+        "destruction_process": 0.0
+      },
+      "matched_evidence": {
+        "retention_policy": [],
+        "destruction_process": []
+      },
+      "matched_snippets": {
+        "retention_policy": [],
+        "destruction_process": []
+      }
+    },
+    "CQI1": {
+      "status": "PARTIAL",
+      "clause_score": 0.5,
+      "block_scores": {
+        "indicator_defined": 0.6667,
+        "data_collection": 0.3333,
+        "analysis": 0.3333,
+        "corrective_action": 0.6667
+      },
+      "matched_evidence": {
+        "indicator_defined": [
+          "quality indicator",
+          "indicator"
+        ],
+        "data_collection": [
+          "monitoring"
+        ],
+        "analysis": [
+          "review"
+        ],
+        "corrective_action": [
+          "corrective action",
+          "improvement"
+        ]
+      },
+      "matched_snippets": {
+        "indicator_defined": [
+          "1 Monitoring of Quality Indicators",
+          "The hospital monitors selected quality indicators to assess service efficiency and patient experience",
+          "Key indicators"
+        ],
+        "data_collection": [
+          "management, quality monitoring, and human resource practices",
+          "Quality Monitoring and Improvement (CQI)",
+          "1 Monitoring of Quality Indicators"
+        ],
+        "analysis": [
+          "Relevant data is periodically reviewed by",
+          "Quality-related data is collected and reviewed to identify opportunities for improvement",
+          "Note: This document represents internal policy documentation and is subject to periodic review and updates as part"
+        ],
+        "corrective_action": [
+          "Corrective actions may be",
+          "Quality Monitoring and Improvement (CQI)",
+          "Quality-related data is collected and reviewed to identify opportunities for improvement"
+        ]
+      }
+    },
+    "HRM2a": {
+      "status": "PARTIAL",
+      "clause_score": 0.4,
+      "block_scores": {
+        "job_descriptions": 0.0,
+        "employee_records": 1.0,
+        "grievance_mechanism": 0.0
+      },
+      "matched_evidence": {
+        "job_descriptions": [],
+        "employee_records": [
+          "employee record",
+          "staff file",
+          "qualification document",
+          "leave record"
+        ],
+        "grievance_mechanism": []
+      },
+      "matched_snippets": {
+        "job_descriptions": [],
+        "employee_records": [
+          "1 Employee Records",
+          "The hospital maintains individual staff files for all employees",
+          "Staff leave records are also maintained by the administration"
+        ],
+        "grievance_mechanism": []
+      }
+    }
+  }
+}
