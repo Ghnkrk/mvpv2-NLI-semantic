@@ -28,15 +28,17 @@ def generate_report(results: dict) -> str:
             "status": status,
             "clause_score": result["clause_score"],
             "block_scores": result["block_scores"],
+            "mandatory_failures": result.get("mandatory_failures", []),
             "matched_evidence": result["matched_evidence"],
-            "matched_snippets": result.get("matched_snippets", {})
+            "matched_snippets": result.get("matched_snippets", {}),
+            "decision_trace": result.get("decision_trace", ""),
         }
 
     report["summary"] = {
         "total_clauses": len(results),
         "compliant": status_counts["COMPLIANT"],
         "partial": status_counts["PARTIAL"],
-        "non_compliant": status_counts["NON_COMPLIANT"]
+        "non_compliant": status_counts["NON_COMPLIANT"],
     }
 
     return json.dumps(report, indent=2)
@@ -95,6 +97,14 @@ def _styles():
         fontName="Helvetica-Oblique",
     ))
     ss.add(ParagraphStyle(
+        "TraceText",
+        parent=ss["Normal"],
+        fontSize=8,
+        leading=10,
+        leftIndent=4 * mm,
+        textColor=colors.HexColor("#7f8c8d"),
+    ))
+    ss.add(ParagraphStyle(
         "SmallItalic",
         parent=ss["Normal"],
         fontSize=8,
@@ -102,14 +112,6 @@ def _styles():
         textColor=colors.grey,
     ))
     return ss
-
-
-def _status_para(status: str, ss) -> Paragraph:
-    color = STATUS_COLORS.get(status, colors.black)
-    return Paragraph(
-        f'<font color="{color.hexval()}">{status}</font>',
-        ss["Body"],
-    )
 
 
 def generate_pdf_report(
@@ -120,13 +122,7 @@ def generate_pdf_report(
     """
     Generate a professional PDF gap report.
 
-    Args:
-        results: clause evaluation results dict
-        source_filename: name of the input PDF that was analysed
-        output_path: path to write the PDF to
-
-    Returns:
-        The output_path written to.
+    Returns the output_path written to.
     """
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
 
@@ -194,6 +190,23 @@ def generate_pdf_report(
             f'  (score: {result["clause_score"]})',
             ss["ClauseHead"],
         ))
+
+        # Decision trace
+        trace = result.get("decision_trace", "")
+        if trace:
+            story.append(Paragraph(
+                f"<i>Decision: {trace}</i>", ss["TraceText"]
+            ))
+
+        # Mandatory failures
+        mf = result.get("mandatory_failures", [])
+        if mf:
+            story.append(Paragraph(
+                f'<font color="#e74c3c">Mandatory failures: {", ".join(mf)}</font>',
+                ss["TraceText"],
+            ))
+
+        story.append(Spacer(1, 1.5 * mm))
 
         # Block scores table
         block_header = [

@@ -11,10 +11,9 @@ def normalize_text(text: str) -> str:
 
 def split_sentences(raw_text: str) -> list[str]:
     """
-    Split raw text into sentences on period boundaries.
-    Returns lowercased sentences for matching.
+    Split raw text into sentences on period/newline boundaries.
+    Returns cleaned sentences preserving original casing.
     """
-    # Split on period, question mark, or newline boundaries
     parts = re.split(r'[.\n]+', raw_text)
     sentences = [s.strip() for s in parts if s.strip()]
     return sentences
@@ -24,9 +23,10 @@ def compute_block_score(text: str, signals: list) -> tuple[float, list[str]]:
     """
     Compute the match score for a single evidence block.
 
+    Score = min(1.0, matched_count / total_signal_count), rounded to 4 decimals.
+
     Returns:
-        (score, matched_signals) — score is fraction of signals found,
-        matched_signals lists which signals were detected.
+        (score, matched_signals)
     """
     if not signals:
         return 0.0, []
@@ -36,14 +36,14 @@ def compute_block_score(text: str, signals: list) -> tuple[float, list[str]]:
         if signal.lower() in text:
             matched.append(signal)
 
-    score = len(matched) / len(signals)
-    return score, matched
+    score = min(1.0, len(matched) / len(signals))
+    return round(score, 4), matched
 
 
 def extract_snippets(sentences: list[str], signals: list) -> list[str]:
     """
-    For each signal, find sentences containing it and return as evidence snippets.
-    Sentences are matched case-insensitively.
+    For each matched signal, find sentences containing it.
+    Returns unique sentences as evidence snippets (case-insensitive match).
     """
     snippets = []
     seen = set()

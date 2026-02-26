@@ -1,0 +1,184 @@
+{
+  "summary": {
+    "total_clauses": 4,
+    "compliant": 4,
+    "partial": 0,
+    "non_compliant": 0
+  },
+  "clauses": {
+    "IMS3": {
+      "status": "COMPLIANT",
+      "clause_score": 0.7667,
+      "block_scores": {
+        "policy_statement": 1.0,
+        "access_control_procedure": 0.6667,
+        "security_controls": 0.5
+      },
+      "mandatory_failures": [],
+      "matched_evidence": {
+        "policy_statement": [
+          "confidentiality",
+          "privacy of records"
+        ],
+        "access_control_procedure": [
+          "authorized access",
+          "role based access"
+        ],
+        "security_controls": [
+          "data security",
+          "electronic medical records"
+        ]
+      },
+      "matched_snippets": {
+        "policy_statement": [
+          "1 Confidentiality Policy",
+          "Confidentiality and privacy of records are strictly maintained in compliance with applicable"
+        ],
+        "access_control_procedure": [
+          "Unauthorized access is strictly prohibited"
+        ],
+        "security_controls": [
+          "Data security measures are in place to prevent loss, destruction, or tampering",
+          "is implemented in the electronic medical records system"
+        ]
+      },
+      "decision_trace": "All mandatory blocks have evidence; clause_score 0.7667 >= 0.7"
+    },
+    "IMS4": {
+      "status": "COMPLIANT",
+      "clause_score": 0.4166,
+      "block_scores": {
+        "retention_policy": 0.3333,
+        "destruction_process": 0.5
+      },
+      "mandatory_failures": [],
+      "matched_evidence": {
+        "retention_policy": [
+          "retention period"
+        ],
+        "destruction_process": [
+          "shredding",
+          "data disposal"
+        ]
+      },
+      "matched_snippets": {
+        "retention_policy": [
+          "The hospital has a defined retention period for each type of record including OPD, IPD, MLC and",
+          "Upon completion of the retention period, records are securely destroyed through shredding"
+        ],
+        "destruction_process": [
+          "Upon completion of the retention period, records are securely destroyed through shredding",
+          "(physical records) or secure data disposal procedures (electronic records)"
+        ]
+      },
+      "decision_trace": "All mandatory blocks have signal matches (weak matches in: retention_policy)"
+    },
+    "CQI1": {
+      "status": "COMPLIANT",
+      "clause_score": 0.9167,
+      "block_scores": {
+        "indicator_defined": 0.6667,
+        "data_collection": 1.0,
+        "analysis": 1.0,
+        "corrective_action": 1.0
+      },
+      "mandatory_failures": [],
+      "matched_evidence": {
+        "indicator_defined": [
+          "quality indicator",
+          "indicator"
+        ],
+        "data_collection": [
+          "data collection",
+          "monitoring",
+          "measurement"
+        ],
+        "analysis": [
+          "analysis",
+          "review",
+          "evaluation"
+        ],
+        "corrective_action": [
+          "corrective action",
+          "preventive action",
+          "improvement"
+        ]
+      },
+      "matched_snippets": {
+        "indicator_defined": [
+          "Defined quality indicators (e",
+          "Monthly monitoring and measurement of indicators"
+        ],
+        "data_collection": [
+          "A documented data collection mechanism",
+          "Monthly monitoring and measurement of indicators"
+        ],
+        "analysis": [
+          "Periodic analysis and review of collected data",
+          "Corrective action and preventive action plans based on analysis results",
+          "medical records are protected through password authentication and periodic access review",
+          "Corrective actions are implemented and effectiveness is reviewed in subsequent meetings",
+          "Administrative Review",
+          "All policies are reviewed annually",
+          "Records of review and updates are maintained",
+          "Documentation of improvement initiatives and follow-up evaluation"
+        ],
+        "corrective_action": [
+          "Corrective action and preventive action plans based on analysis results",
+          "Corrective actions are implemented and effectiveness is reviewed in subsequent meetings",
+          "Continuous Quality Improvement (CQI)",
+          "1 Quality Improvement Programme",
+          "The hospital has a structured Quality Improvement Programme applicable to all departments",
+          "Documentation of improvement initiatives and follow-up evaluation"
+        ]
+      },
+      "decision_trace": "All mandatory blocks have signal matches"
+    },
+    "HRM2a": {
+      "status": "COMPLIANT",
+      "clause_score": 0.6667,
+      "block_scores": {
+        "job_descriptions": 0.3333,
+        "employee_records": 1.0,
+        "grievance_mechanism": 0.6667
+      },
+      "mandatory_failures": [],
+      "matched_evidence": {
+        "job_descriptions": [
+          "job description"
+        ],
+        "employee_records": [
+          "employee record",
+          "staff file",
+          "qualification document",
+          "leave record"
+        ],
+        "grievance_mechanism": [
+          "grievance",
+          "disciplinary"
+        ]
+      },
+      "matched_snippets": {
+        "job_descriptions": [
+          "1 Job Descriptions",
+          "All cadres of employees have written job descriptions",
+          "Job descriptions are signed by the Head of Department and acknowledged by the"
+        ],
+        "employee_records": [
+          "2 Employee Records",
+          "The hospital maintains personal staff files for all employees",
+          "Qualification documents",
+          "Leave records"
+        ],
+        "grievance_mechanism": [
+          "3 Grievance and Disciplinary Mechanism",
+          "The hospital has a documented grievance handling procedure",
+          "A grievance redressal committee",
+          "Timelines for grievance resolution are defined",
+          "Disciplinary procedures are clearly"
+        ]
+      },
+      "decision_trace": "All blocks have evidence; clause_score 0.6667 (weak matches in: job_descriptions)"
+    }
+  }
+}
