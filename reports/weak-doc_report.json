@@ -8,9 +8,9 @@
   "clauses": {
     "IMS3": {
       "status": "NON_COMPLIANT",
-      "clause_score": 0.25,
+      "clause_score": 0.05,
       "block_scores": {
-        "policy_statement": 0.5,
+        "policy_statement": 0.0,
         "access_control_procedure": 0.0,
         "security_controls": 0.25
       },
@@ -33,16 +33,12 @@
         ]
       },
       "semantic_matches": {
-        "policy_statement": [
-          "treated confidentially"
-        ],
+        "policy_statement": [],
         "access_control_procedure": [],
         "security_controls": []
       },
-      "semantic_only_blocks": [
-        "policy_statement"
-      ],
-      "decision_trace": "All 2 mandatory blocks lack sufficient exact evidence"
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "IMS4": {
       "status": "NON_COMPLIANT",
@@ -68,7 +64,7 @@
         "destruction_process": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "2 mandatory blocks lack sufficient exact evidence: retention_policy, destruction_process"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "CQI1": {
       "status": "PARTIAL",
@@ -153,7 +149,7 @@
         "grievance_mechanism": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks with no evidence: job_descriptions"
+      "decision_trace": "Mandatory blocks with no exact evidence: job_descriptions"
     },
     "AAC2": {
       "status": "NON_COMPLIANT",
@@ -183,7 +179,7 @@
         "admission_time_defined": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "All 2 mandatory blocks lack sufficient exact evidence"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "COP2": {
       "status": "NON_COMPLIANT",
@@ -212,7 +208,7 @@
         "ambulance_procedure": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "All 1 mandatory blocks lack sufficient exact evidence"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "COP3": {
       "status": "NON_COMPLIANT",
@@ -248,7 +244,7 @@
         "reaction_reporting": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "4 mandatory blocks lack sufficient exact evidence: indication_defined, consent_obtained, monitoring_documented, reaction_reporting"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "MOM1": {
       "status": "NON_COMPLIANT",
@@ -284,7 +280,7 @@
         "dispensing": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "4 mandatory blocks lack sufficient exact evidence: procurement, storage, prescription, dispensing"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "HIC1": {
       "status": "NON_COMPLIANT",
@@ -315,7 +311,7 @@
         "bmw_management": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Unknown archetype 'SAFETY_RISK_CONTROL' \u2014 defaulting to NON_COMPLIANT"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     },
     "FMS1": {
       "status": "NON_COMPLIANT",
@@ -346,7 +342,7 @@
         "equipment_maintenance": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Unknown archetype 'SAFETY_RISK_CONTROL' \u2014 defaulting to NON_COMPLIANT"
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     }
   }
 }

@@ -1,9 +1,9 @@
 {
   "summary": {
-    "total_clauses": 4,
+    "total_clauses": 10,
     "compliant": 4,
     "partial": 0,
-    "non_compliant": 0
+    "non_compliant": 6
   },
   "clauses": {
     "IMS3": {
@@ -203,6 +203,199 @@
       },
       "semantic_only_blocks": [],
       "decision_trace": "All blocks have evidence; clause_score 0.6667 (weak matches in: job_descriptions)"
+    },
+    "AAC2": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "registration_process": 0.0,
+        "two_identifiers": 0.0,
+        "admission_time_defined": 0.0
+      },
+      "mandatory_failures": [
+        "registration_process",
+        "two_identifiers"
+      ],
+      "matched_evidence": {
+        "registration_process": [],
+        "two_identifiers": [],
+        "admission_time_defined": []
+      },
+      "matched_snippets": {
+        "registration_process": [],
+        "two_identifiers": [],
+        "admission_time_defined": []
+      },
+      "semantic_matches": {
+        "registration_process": [],
+        "two_identifiers": [],
+        "admission_time_defined": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
+    },
+    "COP2": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "emergency_procedure": 0.0,
+        "mlc_handling": 0.0,
+        "ambulance_procedure": 0.0
+      },
+      "mandatory_failures": [
+        "emergency_procedure"
+      ],
+      "matched_evidence": {
+        "emergency_procedure": [],
+        "mlc_handling": [],
+        "ambulance_procedure": []
+      },
+      "matched_snippets": {
+        "emergency_procedure": [],
+        "mlc_handling": [],
+        "ambulance_procedure": []
+      },
+      "semantic_matches": {
+        "emergency_procedure": [],
+        "mlc_handling": [],
+        "ambulance_procedure": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
+    },
+    "COP3": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "indication_defined": 0.0,
+        "consent_obtained": 0.0,
+        "monitoring_documented": 0.0,
+        "reaction_reporting": 0.0
+      },
+      "mandatory_failures": [
+        "indication_defined",
+        "consent_obtained",
+        "monitoring_documented",
+        "reaction_reporting"
+      ],
+      "matched_evidence": {
+        "indication_defined": [],
+        "consent_obtained": [],
+        "monitoring_documented": [],
+        "reaction_reporting": []
+      },
+      "matched_snippets": {
+        "indication_defined": [],
+        "consent_obtained": [],
+        "monitoring_documented": [],
+        "reaction_reporting": []
+      },
+      "semantic_matches": {
+        "indication_defined": [],
+        "consent_obtained": [],
+        "monitoring_documented": [],
+        "reaction_reporting": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
+    },
+    "MOM1": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "procurement": 0.0,
+        "storage": 0.0,
+        "prescription": 0.0,
+        "dispensing": 0.0
+      },
+      "mandatory_failures": [
+        "procurement",
+        "storage",
+        "prescription",
+        "dispensing"
+      ],
+      "matched_evidence": {
+        "procurement": [],
+        "storage": [],
+        "prescription": [],
+        "dispensing": []
+      },
+      "matched_snippets": {
+        "procurement": [],
+        "storage": [],
+        "prescription": [],
+        "dispensing": []
+      },
+      "semantic_matches": {
+        "procurement": [],
+        "storage": [],
+        "prescription": [],
+        "dispensing": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
+    },
+    "HIC1": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "infection_control_manual": 0.0,
+        "universal_precautions": 0.0,
+        "bmw_management": 0.0
+      },
+      "mandatory_failures": [
+        "infection_control_manual",
+        "universal_precautions",
+        "bmw_management"
+      ],
+      "matched_evidence": {
+        "infection_control_manual": [],
+        "universal_precautions": [],
+        "bmw_management": []
+      },
+      "matched_snippets": {
+        "infection_control_manual": [],
+        "universal_precautions": [],
+        "bmw_management": []
+      },
+      "semantic_matches": {
+        "infection_control_manual": [],
+        "universal_precautions": [],
+        "bmw_management": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
+    },
+    "FMS1": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.0,
+      "block_scores": {
+        "fire_safety_plan": 0.0,
+        "emergency_plan": 0.0,
+        "equipment_maintenance": 0.0
+      },
+      "mandatory_failures": [
+        "fire_safety_plan",
+        "emergency_plan",
+        "equipment_maintenance"
+      ],
+      "matched_evidence": {
+        "fire_safety_plan": [],
+        "emergency_plan": [],
+        "equipment_maintenance": []
+      },
+      "matched_snippets": {
+        "fire_safety_plan": [],
+        "emergency_plan": [],
+        "equipment_maintenance": []
+      },
+      "semantic_matches": {
+        "fire_safety_plan": [],
+        "emergency_plan": [],
+        "equipment_maintenance": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence"
     }
   }
 }

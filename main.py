@@ -35,7 +35,7 @@ def run_engine(pdf_path: str) -> dict:
 
 
 def print_debug(results: dict, filename: str):
-    """Print detailed evaluation trace with exact/semantic breakdown."""
+    """Print detailed evaluation trace with exact, semantic, and NLI enforcement breakdown."""
     print(f"\n{'='*60}")
     print(f"  DEBUG TRACE — {filename}")
     print(f"{'='*60}")
@@ -61,6 +61,10 @@ def print_debug(results: dict, filename: str):
             final = d.get("final_score", r["block_scores"][block_name])
             used = d.get("semantic_used", False)
             only = d.get("semantic_only", False)
+            
+            # Since semantic is threshold filtered >= 0.8, if semantic > 0 then lexical & entailment passed.
+            lexical_pass = "Yes" if semantic > 0 else "No"
+            entail = f"{semantic} (cap enforced)" if semantic > 0 else "0.0"
 
             exact_signals = r["matched_evidence"].get(block_name, [])
             sem_sents = r.get("semantic_matches", {}).get(block_name, [])
@@ -72,9 +76,16 @@ def print_debug(results: dict, filename: str):
                 flag = " [SEMANTIC-ENHANCED]"
 
             print(f"    {block_name}:{flag}")
-            print(f"      Exact:    {exact}  signals={exact_signals}")
-            print(f"      Semantic: {semantic}  sentences={len(sem_sents)}")
-            print(f"      Final:    {final}  semantic_used={used}")
+            print(f"      exact_score:           {exact}  (signals={exact_signals})")
+            print(f"      semantic_raw_score:    {semantic}  (sentences={len(sem_sents)})")
+            
+            # Show capped value specifically in debug (v2 requirement)
+            capped_sem = min(semantic, 0.49) if exact == 0.0 else semantic
+            print(f"      semantic_capped_score: {capped_sem}")
+            
+            print(f"      lexical_filter_passed: {d.get('lexical_filter_passed', False)}")
+            print(f"      entailment_score:      {d.get('raw_entailment_score', 0.0)}")
+            print(f"      final_score:           {final}")
 
     print(f"\n{'='*60}\n")
 

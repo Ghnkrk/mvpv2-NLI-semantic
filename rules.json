@@ -35,7 +35,8 @@
         "evaluation_params": {
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
-        }
+        },
+        "intent": "Patient records must be kept confidential, secure, and accessible only to authorized personnel."
     },
     "IMS4": {
         "clause_id": "IMS4",
@@ -64,7 +65,8 @@
         },
         "evaluation_params": {
             "mandatory_threshold": 0.5
-        }
+        },
+        "intent": "Medical records must have a defined retention period and a secure destruction process."
     },
     "CQI1": {
         "clause_id": "CQI1",
@@ -111,7 +113,8 @@
         "evaluation_params": {
             "chain_required": true,
             "mandatory_threshold": 0.5
-        }
+        },
+        "intent": "The facility must define, collect, and analyze quality indicators to implement corrective actions."
     },
     "HRM2a": {
         "clause_id": "HRM2a",
@@ -150,7 +153,8 @@
         "evaluation_params": {
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
-        }
+        },
+        "intent": "Staff roles must be clearly defined with job descriptions and secure employee records."
     },
     "AAC2": {
         "clause_id": "AAC2",
@@ -188,7 +192,8 @@
         "evaluation_params": {
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
-        }
+        },
+        "intent": "Patients must be registered using a defined process with at least two unique identifiers."
     },
     "COP2": {
         "clause_id": "COP2",
@@ -226,7 +231,8 @@
         "evaluation_params": {
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
-        }
+        },
+        "intent": "The organization must have documented procedures for handling emergencies and medico-legal cases."
     },
     "COP3": {
         "clause_id": "COP3",
@@ -272,7 +278,8 @@
         },
         "evaluation_params": {
             "mandatory_threshold": 0.5
-        }
+        },
+        "intent": "Blood transfusions must follow safe practices including indications, consent, monitoring, and reaction reporting."
     },
     "MOM1": {
         "clause_id": "MOM1",
@@ -318,7 +325,8 @@
         },
         "evaluation_params": {
             "mandatory_threshold": 0.5
-        }
+        },
+        "intent": "Medications must be safely procured, stored, prescribed, and dispensed."
     },
     "HIC1": {
         "clause_id": "HIC1",
@@ -356,7 +364,8 @@
         "evaluation_params": {
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
-        }
+        },
+        "intent": "The facility must implement infection control practices, universal precautions, and biomedical waste management."
     },
     "FMS1": {
         "clause_id": "FMS1",
@@ -394,6 +403,7 @@
         "evaluation_params": {
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
-        }
+        },
+        "intent": "The facility must have plans for fire safety, emergencies, and equipment maintenance to ensure a safe environment."
     }
 }
