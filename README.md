@@ -1,6 +1,6 @@
 # NABH Compliance Auditor Suite
 
-A premium, production-ready AI suite designed for **Healthcare Compliance Auditors** to perform automated gap analysis against NABH (National Accreditation Board for Hospitals & Healthcare Providers) standards.
+A premium AI suite designed for **Healthcare Compliance Auditors** to perform automated gap analysis against NABH (National Accreditation Board for Hospitals & Healthcare Providers) standards.
 
 ## 🚀 Vision
 The suite replaces manual document review with a **Hybrid Deterministic-AI Engine**. It provides a "Results-First" experience, highlighting missing controls and providing an AI-powered roadmap to full accreditation.
@@ -23,7 +23,7 @@ The system uses a **v2 Stabilized Hybrid Architecture** that balances determinis
 - **Entailment**: Requires a strict **0.85 confidence score**.
 
 ### 3. AI Suggestions Layer
-- **Powered by**: Groq Llama-3.1-8b.
+- **Powered by**: Llama-3.1-8b through Groq.
 - **Function**: Distills complex engine output into human-readable categories:
   - **Required Documentation**: Missing policies.
   - **Operational Controls**: Workflow changes.
@@ -83,7 +83,6 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser.
 ## 📊 Key Features
 
 - **Multi-File Orchestration**: Upload multiple SOPs simultaneously.
-- **Glassmorphism UI**: High-end auditor dashboard with reactive elements.
 - **Compliance Explorer**: Sidebar dedicated to successfully passed clauses with humanized reasoning.
 - **Downloadable Intelligence**: Generate professional audit-ready PDFs and raw JSON datasets.
 
