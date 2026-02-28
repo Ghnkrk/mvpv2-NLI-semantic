@@ -1,44 +1,39 @@
 # NABH Compliance Engine (MVP v2)
 
-Simple deterministic engine to check hospital SOPs/manuscripts against NABH standards.
+Deterministic + semantic compliance engine for hospital SOPs against NABH standards.
 
 ## 📁 Folder Structure
-- `main.py`: Main entry point.
-- `rules.json`: Contains the compliance logic, signals, and archetypes.
-- `engine/`: Core logic modules:
-    - `loader.py`: Loads and validates `rules.json`.
-    - `matcher.py`: Text normalization and signal matching.
-    - `evaluator.py`: Archetype-based compliance scoring.
-    - `pdf_reader.py`: Extracts text from PDF files.
-    - `report.py`: Generates JSON and PDF gap reports.
-- `checkPdf/`: Put your input PDF files here.
-- `reports/`: JSON and PDF reports are generated here.
-- `test_regression.py`: Script to verify the engine against known "weak" and "strong" docs.
+- `main.py` — Main entry point
+- `rules.json` — Compliance logic, signals, archetypes
+- `engine/` — Core modules:
+    - `loader.py` — Loads and validates `rules.json`
+    - `matcher.py` — Text normalization and exact signal matching
+    - `semantic.py` — Semantic enhancement layer (sentence-transformers)
+    - `evaluator.py` — Archetype-based compliance scoring
+    - `pdf_reader.py` — PDF text extraction
+    - `report.py` — JSON and PDF report generation
+- `checkPdf/` — Input PDF files
+- `reports/` — Generated reports (JSON + PDF)
+- `test_regression.py` — Regression tests against weak/strong docs
 
 ## 🚀 How to Use
 
-### 1. Run on all files in `checkPdf/`
 ```bash
-python main.py
-```
-
-### 2. Run on specific files
-```bash
+# Run on specific files
 python main.py path/to/file1.pdf path/to/file2.pdf
-```
 
-### 3. Debug Mode (See reasoning trace)
-```bash
+# Run on all files in checkPdf/
+python main.py
+
+# Debug mode (see exact/semantic scores per block)
 python main.py --debug
-```
 
-### 4. Run Regression Tests
-```bash
+# Regression tests
 python test_regression.py
 ```
 
-## 🧠 Core Logic Note
-The engine currently uses **exact signal matching**. 
-- **NON_COMPLIANT**: Zero evidence for mandatory blocks.
-- **PARTIAL**: Evidence exists but is below threshold or mandatory blocks are missing.
-- **COMPLIANT**: All mandatory evidence found with sufficient score.
+## 🧠 How It Works
+1. **Exact matching** — keyword signals matched against document text
+2. **Semantic enhancement** — if exact score is below threshold, sentence-transformers finds paraphrased evidence (score can only go UP)
+3. **Archetype evaluation** — mandatory block rules determine COMPLIANT / PARTIAL / NON_COMPLIANT
+4. **Mandatory safeguard** — blocks with zero exact matches remain failures regardless of semantic matches

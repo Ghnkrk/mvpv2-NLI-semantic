@@ -31,6 +31,8 @@ def generate_report(results: dict) -> str:
             "mandatory_failures": result.get("mandatory_failures", []),
             "matched_evidence": result["matched_evidence"],
             "matched_snippets": result.get("matched_snippets", {}),
+            "semantic_matches": result.get("semantic_matches", {}),
+            "semantic_only_blocks": result.get("semantic_only_blocks", []),
             "decision_trace": result.get("decision_trace", ""),
         }
 
@@ -110,6 +112,15 @@ def _styles():
         fontSize=8,
         leading=10,
         textColor=colors.grey,
+    ))
+    ss.add(ParagraphStyle(
+        "SemanticSnippet",
+        parent=ss["Normal"],
+        fontSize=7.5,
+        leading=10,
+        leftIndent=8 * mm,
+        textColor=colors.HexColor("#6c3483"),
+        fontName="Helvetica-Oblique",
     ))
     return ss
 
@@ -236,23 +247,44 @@ def generate_pdf_report(
         ]))
         story.append(bt)
 
-        # Evidence snippets
+        # Evidence snippets (exact)
         snippets = result.get("matched_snippets", {})
         has_snippets = any(v for v in snippets.values())
         if has_snippets:
             story.append(Spacer(1, 1.5 * mm))
             story.append(Paragraph(
-                "<b>Evidence Snippets</b>", ss["Body"]
+                "<b>Exact Evidence Snippets</b>", ss["Body"]
             ))
             for block_name, sents in snippets.items():
                 if sents:
                     story.append(Paragraph(
                         f"<b>{block_name}:</b>", ss["SnippetText"]
                     ))
-                    for s in sents[:3]:  # cap at 3 per block
+                    for s in sents[:3]:
                         safe = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
                         story.append(Paragraph(
                             f"\u2022 \u201c{safe}\u201d", ss["SnippetText"]
+                        ))
+
+        # Semantic evidence snippets (separate)
+        sem_snippets = result.get("semantic_matches", {})
+        has_sem = any(v for v in sem_snippets.values())
+        if has_sem:
+            story.append(Spacer(1, 1.5 * mm))
+            sem_only = result.get("semantic_only_blocks", [])
+            label = "Semantic Evidence"
+            if sem_only:
+                label += f' <font color="#e74c3c">(semantic-only: {", ".join(sem_only)})</font>'
+            story.append(Paragraph(f"<b>{label}</b>", ss["Body"]))
+            for block_name, sents in sem_snippets.items():
+                if sents:
+                    story.append(Paragraph(
+                        f"<b>{block_name}:</b>", ss["SemanticSnippet"]
+                    ))
+                    for s in sents[:3]:
+                        safe = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                        story.append(Paragraph(
+                            f"\u2022 \u201c{safe}\u201d", ss["SemanticSnippet"]
                         ))
 
         story.append(Spacer(1, 3 * mm))

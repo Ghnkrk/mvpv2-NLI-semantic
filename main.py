@@ -35,7 +35,7 @@ def run_engine(pdf_path: str) -> dict:
 
 
 def print_debug(results: dict, filename: str):
-    """Print detailed evaluation trace for debugging."""
+    """Print detailed evaluation trace with exact/semantic breakdown."""
     print(f"\n{'='*60}")
     print(f"  DEBUG TRACE — {filename}")
     print(f"{'='*60}")
@@ -43,19 +43,38 @@ def print_debug(results: dict, filename: str):
     for clause_id, r in results.items():
         status = r["status"]
         print(f"\n{clause_id}:")
-        print(f"  Archetype:          (from rules.json)")
-        print(f"  Block scores:       {r['block_scores']}")
-        print(f"  Mandatory failures: {r['mandatory_failures'] or '(none)'}")
         print(f"  Clause score:       {r['clause_score']}")
+        print(f"  Mandatory failures: {r['mandatory_failures'] or '(none)'}")
         print(f"  Status:             {status}")
         print(f"  Reason:             {r['decision_trace']}")
 
-        # Show matched evidence per block
-        for block_name, signals in r["matched_evidence"].items():
-            if signals:
-                print(f"    {block_name}: {signals}")
-            else:
-                print(f"    {block_name}: (no matches)")
+        sem_only = r.get("semantic_only_blocks", [])
+        if sem_only:
+            print(f"  ⚠ Semantic-only:   {sem_only}")
+
+        # Per-block detail
+        details = r.get("block_details", {})
+        for block_name in r["block_scores"]:
+            d = details.get(block_name, {})
+            exact = d.get("exact_score", r["block_scores"][block_name])
+            semantic = d.get("semantic_score", 0.0)
+            final = d.get("final_score", r["block_scores"][block_name])
+            used = d.get("semantic_used", False)
+            only = d.get("semantic_only", False)
+
+            exact_signals = r["matched_evidence"].get(block_name, [])
+            sem_sents = r.get("semantic_matches", {}).get(block_name, [])
+
+            flag = ""
+            if only:
+                flag = " [SEMANTIC-ONLY]"
+            elif used:
+                flag = " [SEMANTIC-ENHANCED]"
+
+            print(f"    {block_name}:{flag}")
+            print(f"      Exact:    {exact}  signals={exact_signals}")
+            print(f"      Semantic: {semantic}  sentences={len(sem_sents)}")
+            print(f"      Final:    {final}  semantic_used={used}")
 
     print(f"\n{'='*60}\n")
 

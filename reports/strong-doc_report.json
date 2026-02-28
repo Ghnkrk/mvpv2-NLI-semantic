@@ -42,6 +42,12 @@
           "is implemented in the electronic medical records system"
         ]
       },
+      "semantic_matches": {
+        "policy_statement": [],
+        "access_control_procedure": [],
+        "security_controls": []
+      },
+      "semantic_only_blocks": [],
       "decision_trace": "All mandatory blocks have evidence; clause_score 0.7667 >= 0.7"
     },
     "IMS4": {
@@ -71,6 +77,11 @@
           "(physical records) or secure data disposal procedures (electronic records)"
         ]
       },
+      "semantic_matches": {
+        "retention_policy": [],
+        "destruction_process": []
+      },
+      "semantic_only_blocks": [],
       "decision_trace": "All mandatory blocks have signal matches (weak matches in: retention_policy)"
     },
     "CQI1": {
@@ -132,6 +143,13 @@
           "Documentation of improvement initiatives and follow-up evaluation"
         ]
       },
+      "semantic_matches": {
+        "indicator_defined": [],
+        "data_collection": [],
+        "analysis": [],
+        "corrective_action": []
+      },
+      "semantic_only_blocks": [],
       "decision_trace": "All mandatory blocks have signal matches"
     },
     "HRM2a": {
@@ -178,6 +196,12 @@
           "Disciplinary procedures are clearly"
         ]
       },
+      "semantic_matches": {
+        "job_descriptions": [],
+        "employee_records": [],
+        "grievance_mechanism": []
+      },
+      "semantic_only_blocks": [],
       "decision_trace": "All blocks have evidence; clause_score 0.6667 (weak matches in: job_descriptions)"
     }
   }

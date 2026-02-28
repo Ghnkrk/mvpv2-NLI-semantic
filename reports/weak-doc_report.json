@@ -8,9 +8,9 @@
   "clauses": {
     "IMS3": {
       "status": "NON_COMPLIANT",
-      "clause_score": 0.05,
+      "clause_score": 0.25,
       "block_scores": {
-        "policy_statement": 0.0,
+        "policy_statement": 0.5,
         "access_control_procedure": 0.0,
         "security_controls": 0.25
       },
@@ -32,7 +32,17 @@
           "Access to electronic medical records is provided to relevant staff"
         ]
       },
-      "decision_trace": "All 2 mandatory blocks have zero signal matches"
+      "semantic_matches": {
+        "policy_statement": [
+          "treated confidentially"
+        ],
+        "access_control_procedure": [],
+        "security_controls": []
+      },
+      "semantic_only_blocks": [
+        "policy_statement"
+      ],
+      "decision_trace": "All 2 mandatory blocks lack sufficient exact evidence"
     },
     "IMS4": {
       "status": "NON_COMPLIANT",
@@ -53,7 +63,12 @@
         "retention_policy": [],
         "destruction_process": []
       },
-      "decision_trace": "2 mandatory blocks have zero matches: retention_policy, destruction_process"
+      "semantic_matches": {
+        "retention_policy": [],
+        "destruction_process": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "2 mandatory blocks lack sufficient exact evidence: retention_policy, destruction_process"
     },
     "CQI1": {
       "status": "PARTIAL",
@@ -95,6 +110,13 @@
           "Continuous Quality Improvement (CQI)"
         ]
       },
+      "semantic_matches": {
+        "indicator_defined": [],
+        "data_collection": [],
+        "analysis": [],
+        "corrective_action": []
+      },
+      "semantic_only_blocks": [],
       "decision_trace": "Chain incomplete \u2014 weak evidence in: data_collection, analysis, corrective_action (below threshold 0.5)"
     },
     "HRM2a": {
@@ -125,6 +147,12 @@
         ],
         "grievance_mechanism": []
       },
+      "semantic_matches": {
+        "job_descriptions": [],
+        "employee_records": [],
+        "grievance_mechanism": []
+      },
+      "semantic_only_blocks": [],
       "decision_trace": "Mandatory blocks with no evidence: job_descriptions"
     }
   }

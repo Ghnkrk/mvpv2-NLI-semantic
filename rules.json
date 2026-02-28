@@ -151,5 +151,249 @@
             "mandatory_threshold": 0.5,
             "overall_compliance_threshold": 0.7
         }
+    },
+    "AAC2": {
+        "clause_id": "AAC2",
+        "archetype": "POLICY_PROCEDURE",
+        "criticality": "medium",
+        "evidence_blocks": {
+            "registration_process": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "registration process",
+                    "admission process",
+                    "documented registration"
+                ]
+            },
+            "two_identifiers": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "two identifiers",
+                    "unique id number",
+                    "patient identification"
+                ]
+            },
+            "admission_time_defined": {
+                "mandatory": false,
+                "weight": 0.2,
+                "signals": [
+                    "expected time for registration",
+                    "admission time defined",
+                    "time for admission"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5,
+            "overall_compliance_threshold": 0.7
+        }
+    },
+    "COP2": {
+        "clause_id": "COP2",
+        "archetype": "POLICY_PROCEDURE",
+        "criticality": "high",
+        "evidence_blocks": {
+            "emergency_procedure": {
+                "mandatory": true,
+                "weight": 0.5,
+                "signals": [
+                    "emergency services procedure",
+                    "documented emergency procedure",
+                    "emergency protocol"
+                ]
+            },
+            "mlc_handling": {
+                "mandatory": false,
+                "weight": 0.25,
+                "signals": [
+                    "medico legal case",
+                    "mlc handling",
+                    "legal case procedure"
+                ]
+            },
+            "ambulance_procedure": {
+                "mandatory": false,
+                "weight": 0.25,
+                "signals": [
+                    "ambulance procedure",
+                    "ambulance maintenance",
+                    "ambulance services"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5,
+            "overall_compliance_threshold": 0.7
+        }
+    },
+    "COP3": {
+        "clause_id": "COP3",
+        "archetype": "LIFECYCLE_MANAGEMENT",
+        "criticality": "high",
+        "evidence_blocks": {
+            "indication_defined": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "indication for transfusion",
+                    "use of blood components",
+                    "blood transfusion indication"
+                ]
+            },
+            "consent_obtained": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "blood transfusion consent",
+                    "informed consent for transfusion",
+                    "consent obtained"
+                ]
+            },
+            "monitoring_documented": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "transfusion monitoring",
+                    "vitals during transfusion",
+                    "monitoring of transfusion"
+                ]
+            },
+            "reaction_reporting": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "adverse transfusion reaction",
+                    "reaction reporting",
+                    "reporting of blood reaction"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5
+        }
+    },
+    "MOM1": {
+        "clause_id": "MOM1",
+        "archetype": "LIFECYCLE_MANAGEMENT",
+        "criticality": "high",
+        "evidence_blocks": {
+            "procurement": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "procurement of medication",
+                    "purchase of medication",
+                    "pharmacy procurement"
+                ]
+            },
+            "storage": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "storage of medication",
+                    "drug storage",
+                    "medication storage"
+                ]
+            },
+            "prescription": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "prescription of medication",
+                    "doctor orders medication",
+                    "medication prescription"
+                ]
+            },
+            "dispensing": {
+                "mandatory": true,
+                "weight": 0.25,
+                "signals": [
+                    "dispensing of medication",
+                    "medication dispensed",
+                    "pharmacy dispensing"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5
+        }
+    },
+    "HIC1": {
+        "clause_id": "HIC1",
+        "archetype": "SAFETY_RISK_CONTROL",
+        "criticality": "high",
+        "evidence_blocks": {
+            "infection_control_manual": {
+                "mandatory": true,
+                "weight": 0.4,
+                "signals": [
+                    "infection control manual",
+                    "infection control program",
+                    "documented infection control"
+                ]
+            },
+            "universal_precautions": {
+                "mandatory": true,
+                "weight": 0.3,
+                "signals": [
+                    "universal precautions",
+                    "hand hygiene",
+                    "disinfection and sterilization"
+                ]
+            },
+            "bmw_management": {
+                "mandatory": true,
+                "weight": 0.3,
+                "signals": [
+                    "biomedical waste management",
+                    "bmw management",
+                    "waste disposal as per rules"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5,
+            "overall_compliance_threshold": 0.7
+        }
+    },
+    "FMS1": {
+        "clause_id": "FMS1",
+        "archetype": "SAFETY_RISK_CONTROL",
+        "criticality": "high",
+        "evidence_blocks": {
+            "fire_safety_plan": {
+                "mandatory": true,
+                "weight": 0.35,
+                "signals": [
+                    "fire safety plan",
+                    "fire detection system",
+                    "fire safety procedure"
+                ]
+            },
+            "emergency_plan": {
+                "mandatory": true,
+                "weight": 0.35,
+                "signals": [
+                    "emergency response plan",
+                    "emergency preparedness",
+                    "disaster management plan"
+                ]
+            },
+            "equipment_maintenance": {
+                "mandatory": true,
+                "weight": 0.3,
+                "signals": [
+                    "equipment maintenance plan",
+                    "preventive maintenance",
+                    "breakdown maintenance"
+                ]
+            }
+        },
+        "evaluation_params": {
+            "mandatory_threshold": 0.5,
+            "overall_compliance_threshold": 0.7
+        }
     }
 }
