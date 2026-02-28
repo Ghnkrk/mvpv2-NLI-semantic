@@ -1,39 +1,112 @@
-# NABH Compliance Engine (MVP v2)
+# NABH Compliance Auditor Suite
 
-Deterministic + semantic compliance engine for hospital SOPs against NABH standards.
+A premium, production-ready AI suite designed for **Healthcare Compliance Auditors** to perform automated gap analysis against NABH (National Accreditation Board for Hospitals & Healthcare Providers) standards.
 
-## 📁 Folder Structure
-- `main.py` — Main entry point
-- `rules.json` — Compliance logic, signals, archetypes
-- `engine/` — Core modules:
-    - `loader.py` — Loads and validates `rules.json`
-    - `matcher.py` — Text normalization and exact signal matching
-    - `semantic.py` — Semantic enhancement layer (sentence-transformers)
-    - `evaluator.py` — Archetype-based compliance scoring
-    - `pdf_reader.py` — PDF text extraction
-    - `report.py` — JSON and PDF report generation
-- `checkPdf/` — Input PDF files
-- `reports/` — Generated reports (JSON + PDF)
-- `test_regression.py` — Regression tests against weak/strong docs
+## 🚀 Vision
+The suite replaces manual document review with a **Hybrid Deterministic-AI Engine**. It provides a "Results-First" experience, highlighting missing controls and providing an AI-powered roadmap to full accreditation.
 
-## 🚀 How to Use
+---
 
-```bash
-# Run on specific files
-python main.py path/to/file1.pdf path/to/file2.pdf
+## 🏗️ Architecture
 
-# Run on all files in checkPdf/
-python main.py
+The system uses a **v2 Stabilized Hybrid Architecture** that balances deterministic precision with semantic intelligence.
 
-# Debug mode (see exact/semantic scores per block)
-python main.py --debug
+### 1. Deterministic Lexical Layer (Exact Match v2)
+- **Token-Based Overlap**: Uses NLTK PorterStemmer to normalize text.
+- **Robustness**: Matches "procurement" to "procured" and "roles defined" to "defined roles".
+- **Threshold**: Requires **60% token overlap** between a rule signal and a document sentence to be considered an "Exact Match".
 
-# Regression tests
-python test_regression.py
+### 2. Semantic Enhancement Layer (NLI)
+- **Model**: `cross-encoder/nli-deberta-v3-small`.
+- **Logic**: If exact matching fails, the engine uses **Natural Language Inference (NLI)** to check if the sentence *entails* the compliance requirement.
+- **Safeguard**: Compliance found purely via semantic matching is **capped at 0.49 score**, preventing hallucinated compliance.
+- **Entailment**: Requires a strict **0.85 confidence score**.
+
+### 3. AI Suggestions Layer
+- **Powered by**: Groq Llama-3.1-8b.
+- **Function**: Distills complex engine output into human-readable categories:
+  - **Required Documentation**: Missing policies.
+  - **Operational Controls**: Workflow changes.
+  - **Audit Readiness**: Critical tips for the final inspection.
+
+---
+
+## 🔄 System Flow
+
+```mermaid
+graph TD
+    A[PDF Upload] --> B[Text Extraction & Normalization]
+    B --> C{Deterministic Engine}
+    
+    C -->|Match found| D[Found Snippet & Full Score]
+    C -->|No Direct Match| E[Semantic NLI Layer]
+    
+    E -->|Entailment > 0.85| F[Partial Score - Cap 0.49]
+    E -->|No Match| G[Missing/Non-Compliant]
+    
+    D --> H[Rule Archetype Evaluator]
+    F --> H
+    G --> H
+    
+    H --> I[FastAPI Pipeline]
+    I --> J[Groq LLM Roadmapper]
+    J --> K[Web Dashboard / PDF Report]
 ```
 
-## 🧠 How It Works
-1. **Exact matching** — keyword signals matched against document text
-2. **Semantic enhancement** — if exact score is below threshold, sentence-transformers finds paraphrased evidence (score can only go UP)
-3. **Archetype evaluation** — mandatory block rules determine COMPLIANT / PARTIAL / NON_COMPLIANT
-4. **Mandatory safeguard** — blocks with zero exact matches remain failures regardless of semantic matches
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Python 3.10+
+- `uv` package manager (recommended)
+- Groq API Key (stored in `.env`)
+
+### Installation
+```bash
+# Initialize dependencies
+uv sync
+
+# Setup environment
+echo "GROQ_API_KEY=your_key_here" > .env
+```
+
+### Running the Application
+```bash
+# Start the FastAPI server (Backend + Frontend)
+uv run uvicorn api.main:app --reload
+```
+Open **[http://localhost:8000](http://localhost:8000)** in your browser.
+
+---
+
+## 📊 Key Features
+
+- **Multi-File Orchestration**: Upload multiple SOPs simultaneously.
+- **Glassmorphism UI**: High-end auditor dashboard with reactive elements.
+- **Compliance Explorer**: Sidebar dedicated to successfully passed clauses with humanized reasoning.
+- **Downloadable Intelligence**: Generate professional audit-ready PDFs and raw JSON datasets.
+
+---
+
+## ⚠️ Limits & Constraints
+
+- **Lexical Threshold (0.6)**: The engine requires a majority token overlap. Sub-60% matches are ignored by the exact layer.
+- **Semantic Cap (0.49)**: You cannot achieve 100% compliance through "vague" semantic matches alone. Physical/Documentary evidence must be detected lexicaly for a full pass.
+- **Entailment Gating (0.85)**: The NLI layer is tuned to be "Strictly Conservative" to avoid false positives.
+- **PDF Scans**: Text extraction works best on text-layer PDFs. OCR is supported but accuracy depends on image quality.
+
+---
+
+## 📂 Project Structure
+
+- `api/`: FastAPI server and endpoints.
+- `engine/`: The core compliance brain (Matcher, Evaluator, Semantic, Suggestions).
+- `frontend/`: Premium glassmorphism web dashboard.
+- `rules.json`: The deterministic "NABH Rulebook" with signals and archetypes.
+- `reports/`: Storage for generated JSON and PDF outputs.
+
+---
+
+**Built for specialized Healthcare Auditing.**  
+*Disclaimer: This tool is an analysis aid and should be used in conjunction with professional auditor review.*

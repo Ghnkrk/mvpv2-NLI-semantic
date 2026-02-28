@@ -1,0 +1,536 @@
+{
+  "summary": {
+    "total_clauses": 10,
+    "compliant": 1,
+    "partial": 5,
+    "non_compliant": 4
+  },
+  "clauses": {
+    "IMS3": {
+      "status": "PARTIAL",
+      "clause_score": 0.25,
+      "block_scores": {
+        "policy_statement": 0.5,
+        "access_control_procedure": 0.0,
+        "security_controls": 0.25
+      },
+      "mandatory_failures": [
+        "access_control_procedure"
+      ],
+      "matched_evidence": {
+        "policy_statement": [
+          "confidentiality"
+        ],
+        "access_control_procedure": [],
+        "security_controls": [
+          "electronic medical records"
+        ]
+      },
+      "matched_snippets": {
+        "policy_statement": [
+          "Information Management and Confidentiality",
+          "Patient health information is maintained with strict confidentiality"
+        ],
+        "access_control_procedure": [],
+        "security_controls": [
+          "periodic access reviews, are implemented to safeguard electronic medical records"
+        ]
+      },
+      "semantic_matches": {
+        "policy_statement": [],
+        "access_control_procedure": [],
+        "security_controls": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks with no exact evidence: access_control_procedure",
+      "intent": "Patient records must be kept confidential, secure, and accessible only to authorized personnel."
+    },
+    "IMS4": {
+      "status": "COMPLIANT",
+      "clause_score": 0.4583,
+      "block_scores": {
+        "retention_policy": 0.6667,
+        "destruction_process": 0.25
+      },
+      "mandatory_failures": [],
+      "matched_evidence": {
+        "retention_policy": [
+          "retention period",
+          "record retention"
+        ],
+        "destruction_process": [
+          "shredding"
+        ]
+      },
+      "matched_snippets": {
+        "retention_policy": [
+          "Records exceeding the retention period are disposed of securely through shredding in",
+          "Record Retention and Disposal"
+        ],
+        "destruction_process": [
+          "Records exceeding the retention period are disposed of securely through shredding in"
+        ]
+      },
+      "semantic_matches": {
+        "retention_policy": [],
+        "destruction_process": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "All mandatory blocks have signal matches (weak matches in: destruction_process)",
+      "intent": "Medical records must have a defined retention period and a secure destruction process."
+    },
+    "CQI1": {
+      "status": "PARTIAL",
+      "clause_score": 0.3333,
+      "block_scores": {
+        "indicator_defined": 0.3333,
+        "data_collection": 0.0,
+        "analysis": 0.3333,
+        "corrective_action": 0.6667
+      },
+      "mandatory_failures": [
+        "data_collection"
+      ],
+      "matched_evidence": {
+        "indicator_defined": [
+          "indicator"
+        ],
+        "data_collection": [],
+        "analysis": [
+          "review"
+        ],
+        "corrective_action": [
+          "preventive action",
+          "improvement"
+        ]
+      },
+      "matched_snippets": {
+        "indicator_defined": [
+          "Key performance indicators are identified"
+        ],
+        "data_collection": [],
+        "analysis": [
+          "reviewed to ensure readiness",
+          "periodic access reviews, are implemented to safeguard electronic medical records",
+          "and discussed during review meetings",
+          "Periodic performance reviews are conducted"
+        ],
+        "corrective_action": [
+          "Corrective and preventive actions are initiated where",
+          "Continuous Quality Improvement",
+          "A formal Quality Improvement Program is operational"
+        ]
+      },
+      "semantic_matches": {
+        "indicator_defined": [],
+        "data_collection": [],
+        "analysis": [],
+        "corrective_action": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks with no exact evidence: data_collection",
+      "intent": "The facility must define, collect, and analyze quality indicators to implement corrective actions."
+    },
+    "HRM2a": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.4293,
+      "block_scores": {
+        "job_descriptions": 0.49,
+        "employee_records": 0.25,
+        "grievance_mechanism": 0.6667
+      },
+      "mandatory_failures": [
+        "job_descriptions",
+        "employee_records"
+      ],
+      "matched_evidence": {
+        "job_descriptions": [],
+        "employee_records": [],
+        "grievance_mechanism": [
+          "grievance",
+          "disciplinary"
+        ]
+      },
+      "matched_snippets": {
+        "job_descriptions": [],
+        "employee_records": [],
+        "grievance_mechanism": [
+          "A grievance redressal mechanism is in place, and disciplinary procedures are"
+        ]
+      },
+      "semantic_matches": {
+        "job_descriptions": [
+          "Roles and responsibilities are formally documented for all categories of staff"
+        ],
+        "employee_records": [
+          "Roles and responsibilities are formally documented for all categories of staff"
+        ],
+        "grievance_mechanism": []
+      },
+      "semantic_only_blocks": [
+        "job_descriptions",
+        "employee_records"
+      ],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence (semantic evidence detected)",
+      "intent": "Staff roles must be clearly defined with job descriptions and secure employee records."
+    },
+    "AAC2": {
+      "status": "PARTIAL",
+      "clause_score": 0.1333,
+      "block_scores": {
+        "registration_process": 0.0,
+        "two_identifiers": 0.3333,
+        "admission_time_defined": 0.0
+      },
+      "mandatory_failures": [
+        "registration_process"
+      ],
+      "matched_evidence": {
+        "registration_process": [],
+        "two_identifiers": [
+          "two identifiers"
+        ],
+        "admission_time_defined": []
+      },
+      "matched_snippets": {
+        "registration_process": [],
+        "two_identifiers": [
+          "At the time of registration, patient identity is verified using at least two identifiers, such as full"
+        ],
+        "admission_time_defined": []
+      },
+      "semantic_matches": {
+        "registration_process": [],
+        "two_identifiers": [],
+        "admission_time_defined": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks with no exact evidence: registration_process (weak but present: two_identifiers)",
+      "intent": "Patients must be registered using a defined process with at least two unique identifiers."
+    },
+    "COP2": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.1666,
+      "block_scores": {
+        "emergency_procedure": 0.0,
+        "mlc_handling": 0.3333,
+        "ambulance_procedure": 0.3333
+      },
+      "mandatory_failures": [
+        "emergency_procedure"
+      ],
+      "matched_evidence": {
+        "emergency_procedure": [],
+        "mlc_handling": [
+          "medico legal case"
+        ],
+        "ambulance_procedure": [
+          "ambulance services"
+        ]
+      },
+      "matched_snippets": {
+        "emergency_procedure": [],
+        "mlc_handling": [],
+        "ambulance_procedure": [
+          "Ambulance services are available, and vehicle maintenance records are periodically"
+        ]
+      },
+      "semantic_matches": {
+        "emergency_procedure": [],
+        "mlc_handling": [],
+        "ambulance_procedure": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "intent": "The organization must have documented procedures for handling emergencies and medico-legal cases."
+    },
+    "COP3": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.1667,
+      "block_scores": {
+        "indication_defined": 0.0,
+        "consent_obtained": 0.0,
+        "monitoring_documented": 0.0,
+        "reaction_reporting": 0.6667
+      },
+      "mandatory_failures": [
+        "indication_defined",
+        "consent_obtained",
+        "monitoring_documented"
+      ],
+      "matched_evidence": {
+        "indication_defined": [],
+        "consent_obtained": [],
+        "monitoring_documented": [],
+        "reaction_reporting": [
+          "adverse transfusion reaction"
+        ]
+      },
+      "matched_snippets": {
+        "indication_defined": [],
+        "consent_obtained": [],
+        "monitoring_documented": [],
+        "reaction_reporting": [
+          "Any adverse transfusion reactions are recorded and reported as per"
+        ]
+      },
+      "semantic_matches": {
+        "indication_defined": [],
+        "consent_obtained": [],
+        "monitoring_documented": [],
+        "reaction_reporting": [
+          "established reporting mechanisms"
+        ]
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "intent": "Blood transfusions must follow safe practices including indications, consent, monitoring, and reaction reporting."
+    },
+    "MOM1": {
+      "status": "NON_COMPLIANT",
+      "clause_score": 0.2892,
+      "block_scores": {
+        "procurement": 0.0,
+        "storage": 0.0,
+        "prescription": 0.49,
+        "dispensing": 0.6667
+      },
+      "mandatory_failures": [
+        "procurement",
+        "storage",
+        "prescription"
+      ],
+      "matched_evidence": {
+        "procurement": [],
+        "storage": [],
+        "prescription": [],
+        "dispensing": [
+          "dispensing of medication"
+        ]
+      },
+      "matched_snippets": {
+        "procurement": [],
+        "storage": [],
+        "prescription": [],
+        "dispensing": [
+          "prescription, and dispensing of medications"
+        ]
+      },
+      "semantic_matches": {
+        "procurement": [],
+        "storage": [],
+        "prescription": [
+          "prescription, and dispensing of medications"
+        ],
+        "dispensing": [
+          "prescription, and dispensing of medications"
+        ]
+      },
+      "semantic_only_blocks": [
+        "prescription"
+      ],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence (semantic evidence detected)",
+      "intent": "Medications must be safely procured, stored, prescribed, and dispensed."
+    },
+    "HIC1": {
+      "status": "PARTIAL",
+      "clause_score": 0.5,
+      "block_scores": {
+        "infection_control_manual": 1.0,
+        "universal_precautions": 0.3333,
+        "bmw_management": 0.0
+      },
+      "mandatory_failures": [
+        "bmw_management"
+      ],
+      "matched_evidence": {
+        "infection_control_manual": [
+          "infection control manual"
+        ],
+        "universal_precautions": [
+          "hand hygiene"
+        ],
+        "bmw_management": []
+      },
+      "matched_snippets": {
+        "infection_control_manual": [
+          "A comprehensive infection control manual outlines sterilization"
+        ],
+        "universal_precautions": [
+          "practices, hand hygiene protocols, and standard precautions"
+        ],
+        "bmw_management": []
+      },
+      "semantic_matches": {
+        "infection_control_manual": [
+          "Infection Prevention and Control"
+        ],
+        "universal_precautions": [],
+        "bmw_management": []
+      },
+      "semantic_only_blocks": [],
+      "decision_trace": "Mandatory blocks below threshold: universal_precautions, bmw_management",
+      "intent": "The facility must implement infection control practices, universal precautions, and biomedical waste management."
+    },
+    "FMS1": {
+      "status": "PARTIAL",
+      "clause_score": 0.7048,
+      "block_scores": {
+        "fire_safety_plan": 0.49,
+        "emergency_plan": 0.6667,
+        "equipment_maintenance": 1.0
+      },
+      "mandatory_failures": [
+        "fire_safety_plan"
+      ],
+      "matched_evidence": {
+        "fire_safety_plan": [],
+        "emergency_plan": [
+          "emergency response plan",
+          "emergency preparedness"
+        ],
+        "equipment_maintenance": [
+          "breakdown maintenance"
+        ]
+      },
+      "matched_snippets": {
+        "fire_safety_plan": [],
+        "emergency_plan": [
+          "Emergency response plans, including"
+        ],
+        "equipment_maintenance": [
+          "Preventive and breakdown maintenance schedules"
+        ]
+      },
+      "semantic_matches": {
+        "fire_safety_plan": [
+          "Fire detection and alarm systems are installed, and"
+        ],
+        "emergency_plan": [],
+        "equipment_maintenance": [
+          "preparedness, and equipment maintenance"
+        ]
+      },
+      "semantic_only_blocks": [
+        "fire_safety_plan"
+      ],
+      "decision_trace": "Mandatory blocks below threshold: fire_safety_plan (semantic evidence detected)",
+      "intent": "The facility must have plans for fire safety, emergencies, and equipment maintenance to ensure a safe environment."
+    }
+  },
+  "llm_suggestions": {
+    "IMS3": {
+      "improvement_summary": "Improve access control procedures to ensure confidentiality, security, and authorized access to patient records.",
+      "required_documents": [
+        "Access Control Policy",
+        "Access Control Procedure"
+      ],
+      "operational_controls": [
+        "Implement access control software",
+        "Define roles and permissions"
+      ],
+      "audit_readiness_tip": "Verify access logs and audit trails to ensure compliance."
+    },
+    "CQI1": {
+      "improvement_summary": "Enhance quality indicator collection and analysis to implement corrective actions.",
+      "required_documents": [
+        "Quality Indicator Policy",
+        "Data Collection Procedure"
+      ],
+      "operational_controls": [
+        "Define quality indicators",
+        "Establish data collection schedule"
+      ],
+      "audit_readiness_tip": "Verify data collection and analysis reports to ensure compliance."
+    },
+    "HRM2a": {
+      "improvement_summary": "Develop and maintain job descriptions and employee records to ensure clear roles and secure employee information.",
+      "required_documents": [
+        "Job Description Policy",
+        "Employee Record Policy"
+      ],
+      "operational_controls": [
+        "Create job descriptions",
+        "Maintain employee records"
+      ],
+      "audit_readiness_tip": "Verify job descriptions and employee records to ensure compliance."
+    },
+    "AAC2": {
+      "improvement_summary": "Implement a defined patient registration process with at least two unique identifiers.",
+      "required_documents": [
+        "Patient Registration Policy",
+        "Registration Procedure"
+      ],
+      "operational_controls": [
+        "Define registration process",
+        "Implement two-identifier system"
+      ],
+      "audit_readiness_tip": "Verify patient registration records to ensure compliance."
+    },
+    "COP2": {
+      "improvement_summary": "Develop and maintain procedures for handling emergencies and medico-legal cases.",
+      "required_documents": [
+        "Emergency Procedure Policy",
+        "Medico-Legal Case Handling Procedure"
+      ],
+      "operational_controls": [
+        "Develop emergency procedures",
+        "Establish medico-legal case handling process"
+      ],
+      "audit_readiness_tip": "Verify emergency and medico-legal case handling records to ensure compliance."
+    },
+    "COP3": {
+      "improvement_summary": "Develop and maintain procedures for blood transfusions, including indications, consent, monitoring, and reaction reporting.",
+      "required_documents": [
+        "Blood Transfusion Policy",
+        "Blood Transfusion Procedure"
+      ],
+      "operational_controls": [
+        "Develop blood transfusion procedures",
+        "Establish monitoring and reporting processes"
+      ],
+      "audit_readiness_tip": "Verify blood transfusion records to ensure compliance."
+    },
+    "MOM1": {
+      "improvement_summary": "Develop and maintain procedures for medication procurement, storage, and prescription.",
+      "required_documents": [
+        "Medication Procurement Policy",
+        "Medication Storage Procedure",
+        "Prescription Policy"
+      ],
+      "operational_controls": [
+        "Develop medication procurement and storage procedures",
+        "Establish prescription process"
+      ],
+      "audit_readiness_tip": "Verify medication procurement, storage, and prescription records to ensure compliance."
+    },
+    "HIC1": {
+      "improvement_summary": "Implement infection control practices, universal precautions, and biomedical waste management.",
+      "required_documents": [
+        "Infection Control Policy",
+        "Universal Precautions Procedure",
+        "Biomedical Waste Management Procedure"
+      ],
+      "operational_controls": [
+        "Implement infection control practices",
+        "Establish universal precautions",
+        "Develop biomedical waste management plan"
+      ],
+      "audit_readiness_tip": "Verify infection control, universal precautions, and biomedical waste management records to ensure compliance."
+    },
+    "FMS1": {
+      "improvement_summary": "Develop and maintain plans for fire safety, emergencies, and equipment maintenance.",
+      "required_documents": [
+        "Fire Safety Plan Policy",
+        "Emergency Procedure Policy",
+        "Equipment Maintenance Procedure"
+      ],
+      "operational_controls": [
+        "Develop fire safety plan",
+        "Establish emergency procedures",
+        "Establish equipment maintenance schedule"
+      ],
+      "audit_readiness_tip": "Verify fire safety, emergency, and equipment maintenance records to ensure compliance."
+    }
+  }
+}

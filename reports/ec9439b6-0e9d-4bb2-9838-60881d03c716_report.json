@@ -2,33 +2,44 @@
   "summary": {
     "total_clauses": 10,
     "compliant": 0,
-    "partial": 2,
-    "non_compliant": 8
+    "partial": 5,
+    "non_compliant": 5
   },
   "clauses": {
     "IMS3": {
-      "status": "NON_COMPLIANT",
-      "clause_score": 0.05,
+      "status": "PARTIAL",
+      "clause_score": 0.2889,
       "block_scores": {
-        "policy_statement": 0.0,
-        "access_control_procedure": 0.0,
-        "security_controls": 0.25
+        "policy_statement": 0.5,
+        "access_control_procedure": 0.1111,
+        "security_controls": 0.2222
       },
-      "mandatory_failures": [
-        "policy_statement",
-        "access_control_procedure"
-      ],
+      "mandatory_failures": [],
       "matched_evidence": {
-        "policy_statement": [],
-        "access_control_procedure": [],
+        "policy_statement": [
+          "confidentiality",
+          "confidential patient information",
+          "confidential medical records"
+        ],
+        "access_control_procedure": [
+          "controlled access to records"
+        ],
         "security_controls": [
-          "electronic medical records"
+          "electronic medical records",
+          "controlled access to records"
         ]
       },
       "matched_snippets": {
-        "policy_statement": [],
-        "access_control_procedure": [],
+        "policy_statement": [
+          "confidentially",
+          "Patient information is treated",
+          "Access to electronic medical records is provided to relevant staff"
+        ],
+        "access_control_procedure": [
+          "Access to electronic medical records is provided to relevant staff"
+        ],
         "security_controls": [
+          "Patient records are maintained in physical and electronic format",
           "Access to electronic medical records is provided to relevant staff"
         ]
       },
@@ -38,7 +49,7 @@
         "security_controls": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "decision_trace": "All mandatory blocks have evidence but clause_score 0.2889 < 0.7",
       "intent": "Patient records must be kept confidential, secure, and accessible only to authorized personnel."
     },
     "IMS4": {
@@ -70,60 +81,64 @@
     },
     "CQI1": {
       "status": "PARTIAL",
-      "clause_score": 0.4166,
+      "clause_score": 0.2009,
       "block_scores": {
-        "indicator_defined": 0.6667,
-        "data_collection": 0.3333,
-        "analysis": 0.3333,
-        "corrective_action": 0.3333
+        "indicator_defined": 0.2857,
+        "data_collection": 0.25,
+        "analysis": 0.125,
+        "corrective_action": 0.1429
       },
-      "mandatory_failures": [],
+      "mandatory_failures": [
+        "corrective_action"
+      ],
       "matched_evidence": {
         "indicator_defined": [
           "quality indicator",
           "indicator"
         ],
         "data_collection": [
-          "monitoring"
+          "monitoring",
+          "measurement"
         ],
         "analysis": [
           "review"
         ],
-        "corrective_action": [
-          "improvement"
-        ]
+        "corrective_action": []
       },
       "matched_snippets": {
         "indicator_defined": [
           "The hospital monitors certain quality indicators such as OPD waiting time and patient"
         ],
         "data_collection": [
-          "Monitoring results may be discussed during meetings"
+          "Quality Monitoring",
+          "The hospital monitors certain quality indicators such as OPD waiting time and patient",
+          "Basic safety measures are followed"
         ],
         "analysis": [
-          "Data is reviewed periodically by the department head",
-          "subject to periodic review"
+          "Data is reviewed periodically during meetings"
         ],
-        "corrective_action": [
-          "Continuous Quality Improvement (CQI)"
-        ]
+        "corrective_action": []
       },
       "semantic_matches": {
         "indicator_defined": [],
         "data_collection": [],
         "analysis": [],
-        "corrective_action": []
+        "corrective_action": [
+          "Quality Monitoring"
+        ]
       },
-      "semantic_only_blocks": [],
-      "decision_trace": "Chain incomplete \u2014 weak evidence in: data_collection, analysis, corrective_action (below threshold 0.5)",
+      "semantic_only_blocks": [
+        "corrective_action"
+      ],
+      "decision_trace": "Mandatory blocks with no exact evidence: corrective_action (semantic evidence detected)",
       "intent": "The facility must define, collect, and analyze quality indicators to implement corrective actions."
     },
     "HRM2a": {
       "status": "PARTIAL",
-      "clause_score": 0.3,
+      "clause_score": 0.15,
       "block_scores": {
         "job_descriptions": 0.0,
-        "employee_records": 0.75,
+        "employee_records": 0.375,
         "grievance_mechanism": 0.0
       },
       "mandatory_failures": [
@@ -141,8 +156,8 @@
       "matched_snippets": {
         "job_descriptions": [],
         "employee_records": [
-          "The hospital maintains employee records for all staff members",
-          "documents, appointment letters, and leave records"
+          "The hospital maintains employee records including qualification documents, appointment letters,",
+          "and leave records"
         ],
         "grievance_mechanism": []
       },
@@ -152,7 +167,7 @@
         "grievance_mechanism": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks with no exact evidence: job_descriptions",
+      "decision_trace": "Mandatory blocks with no exact evidence: job_descriptions (weak but present: employee_records)",
       "intent": "Staff roles must be clearly defined with job descriptions and secure employee records."
     },
     "AAC2": {
@@ -187,23 +202,28 @@
       "intent": "Patients must be registered using a defined process with at least two unique identifiers."
     },
     "COP2": {
-      "status": "NON_COMPLIANT",
-      "clause_score": 0.0,
+      "status": "PARTIAL",
+      "clause_score": 0.1429,
       "block_scores": {
-        "emergency_procedure": 0.0,
+        "emergency_procedure": 0.2857,
         "mlc_handling": 0.0,
         "ambulance_procedure": 0.0
       },
-      "mandatory_failures": [
-        "emergency_procedure"
-      ],
+      "mandatory_failures": [],
       "matched_evidence": {
-        "emergency_procedure": [],
+        "emergency_procedure": [
+          "emergency services procedure",
+          "emergency management system"
+        ],
         "mlc_handling": [],
         "ambulance_procedure": []
       },
       "matched_snippets": {
-        "emergency_procedure": [],
+        "emergency_procedure": [
+          "Emergency Services",
+          "The hospital provides emergency services for walk-in patients",
+          "Information Management System"
+        ],
         "mlc_handling": [],
         "ambulance_procedure": []
       },
@@ -213,72 +233,98 @@
         "ambulance_procedure": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "decision_trace": "All mandatory blocks have evidence but clause_score 0.1429 < 0.7",
       "intent": "The organization must have documented procedures for handling emergencies and medico-legal cases."
     },
     "COP3": {
       "status": "NON_COMPLIANT",
-      "clause_score": 0.0,
+      "clause_score": 0.5887,
       "block_scores": {
-        "indication_defined": 0.0,
-        "consent_obtained": 0.0,
-        "monitoring_documented": 0.0,
-        "reaction_reporting": 0.0
+        "indication_defined": 0.75,
+        "consent_obtained": 0.625,
+        "monitoring_documented": 0.49,
+        "reaction_reporting": 0.49
       },
       "mandatory_failures": [
-        "indication_defined",
-        "consent_obtained",
         "monitoring_documented",
         "reaction_reporting"
       ],
       "matched_evidence": {
-        "indication_defined": [],
-        "consent_obtained": [],
+        "indication_defined": [
+          "blood transfusion indication"
+        ],
+        "consent_obtained": [
+          "blood transfusion consent"
+        ],
         "monitoring_documented": [],
         "reaction_reporting": []
       },
       "matched_snippets": {
-        "indication_defined": [],
-        "consent_obtained": [],
+        "indication_defined": [
+          "Blood Transfusion",
+          "Blood transfusion may be administered when required based on clinical judgment"
+        ],
+        "consent_obtained": [
+          "Blood Transfusion",
+          "Blood transfusion may be administered when required based on clinical judgment"
+        ],
         "monitoring_documented": [],
         "reaction_reporting": []
       },
       "semantic_matches": {
-        "indication_defined": [],
-        "consent_obtained": [],
-        "monitoring_documented": [],
-        "reaction_reporting": []
+        "indication_defined": [
+          "Blood Transfusion"
+        ],
+        "consent_obtained": [
+          "Blood Transfusion"
+        ],
+        "monitoring_documented": [
+          "Blood Transfusion"
+        ],
+        "reaction_reporting": [
+          "Blood Transfusion"
+        ]
       },
-      "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "semantic_only_blocks": [
+        "monitoring_documented",
+        "reaction_reporting"
+      ],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence (semantic evidence detected)",
       "intent": "Blood transfusions must follow safe practices including indications, consent, monitoring, and reaction reporting."
     },
     "MOM1": {
       "status": "NON_COMPLIANT",
-      "clause_score": 0.0,
+      "clause_score": 0.125,
       "block_scores": {
         "procurement": 0.0,
         "storage": 0.0,
         "prescription": 0.0,
-        "dispensing": 0.0
+        "dispensing": 0.5
       },
       "mandatory_failures": [
         "procurement",
         "storage",
-        "prescription",
-        "dispensing"
+        "prescription"
       ],
       "matched_evidence": {
         "procurement": [],
         "storage": [],
         "prescription": [],
-        "dispensing": []
+        "dispensing": [
+          "pharmacy dispensing",
+          "dispensed by pharmacy staff",
+          "dispensing record maintained"
+        ]
       },
       "matched_snippets": {
         "procurement": [],
         "storage": [],
         "prescription": [],
-        "dispensing": []
+        "dispensing": [
+          "Medicines are stocked in the pharmacy and dispensed to patients based on prescriptions",
+          "Patient records are maintained in physical and electronic format",
+          "The hospital maintains employee records including qualification documents, appointment letters,"
+        ]
       },
       "semantic_matches": {
         "procurement": [],
@@ -291,26 +337,35 @@
       "intent": "Medications must be safely procured, stored, prescribed, and dispensed."
     },
     "HIC1": {
-      "status": "NON_COMPLIANT",
-      "clause_score": 0.0,
+      "status": "PARTIAL",
+      "clause_score": 0.3167,
       "block_scores": {
-        "infection_control_manual": 0.0,
-        "universal_precautions": 0.0,
+        "infection_control_manual": 0.6667,
+        "universal_precautions": 0.1667,
         "bmw_management": 0.0
       },
       "mandatory_failures": [
-        "infection_control_manual",
-        "universal_precautions",
         "bmw_management"
       ],
       "matched_evidence": {
-        "infection_control_manual": [],
-        "universal_precautions": [],
+        "infection_control_manual": [
+          "infection control manual",
+          "infection control program",
+          "documented infection control",
+          "infection control committee"
+        ],
+        "universal_precautions": [
+          "infection control committee"
+        ],
         "bmw_management": []
       },
       "matched_snippets": {
-        "infection_control_manual": [],
-        "universal_precautions": [],
+        "infection_control_manual": [
+          "Infection Control"
+        ],
+        "universal_precautions": [
+          "Infection Control"
+        ],
         "bmw_management": []
       },
       "semantic_matches": {
@@ -319,14 +374,14 @@
         "bmw_management": []
       },
       "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "decision_trace": "Mandatory blocks below threshold: universal_precautions, bmw_management",
       "intent": "The facility must implement infection control practices, universal precautions, and biomedical waste management."
     },
     "FMS1": {
       "status": "NON_COMPLIANT",
-      "clause_score": 0.0,
+      "clause_score": 0.1167,
       "block_scores": {
-        "fire_safety_plan": 0.0,
+        "fire_safety_plan": 0.3333,
         "emergency_plan": 0.0,
         "equipment_maintenance": 0.0
       },
@@ -346,158 +401,141 @@
         "equipment_maintenance": []
       },
       "semantic_matches": {
-        "fire_safety_plan": [],
+        "fire_safety_plan": [
+          "Facility Management and Safety"
+        ],
         "emergency_plan": [],
         "equipment_maintenance": []
       },
-      "semantic_only_blocks": [],
-      "decision_trace": "Mandatory blocks lack sufficient exact evidence",
+      "semantic_only_blocks": [
+        "fire_safety_plan"
+      ],
+      "decision_trace": "Mandatory blocks lack sufficient exact evidence (semantic evidence detected)",
       "intent": "The facility must have plans for fire safety, emergencies, and equipment maintenance to ensure a safe environment."
     }
   },
   "llm_suggestions": {
     "IMS3": {
-      "improvement_summary": "Review and revise the confidentiality, security, and access control policies to ensure they are comprehensive and up-to-date.",
+      "improvement_summary": "Review and update access control procedures to ensure confidentiality, security, and accessibility of patient records.",
       "required_documents": [
-        "Policy statement on confidentiality and security",
-        "Access control procedure",
-        "Security controls documentation"
+        "Access Control Policy",
+        "Security Manual"
       ],
       "operational_controls": [
-        "Implement access controls to restrict access to patient records",
-        "Conduct regular security audits to identify vulnerabilities",
-        "Train staff on confidentiality and security protocols"
+        "Implement role-based access control",
+        "Conduct regular security audits"
       ],
-      "audit_readiness_tip": "Ensure that all staff members understand their roles and responsibilities in maintaining confidentiality and security."
+      "audit_readiness_tip": "Verify that access control procedures are followed by all authorized personnel."
     },
     "IMS4": {
-      "improvement_summary": "Develop and implement a retention policy and destruction process for medical records.",
+      "improvement_summary": "Develop and implement a retention policy and secure destruction process for medical records.",
       "required_documents": [
-        "Retention policy for medical records",
-        "Destruction process for medical records"
+        "Retention Policy",
+        "Destruction Process"
       ],
       "operational_controls": [
-        "Establish a retention period for medical records",
-        "Develop a secure destruction process for medical records",
-        "Train staff on the retention and destruction process"
+        "Establish a record retention schedule",
+        "Dispose of records securely"
       ],
-      "audit_readiness_tip": "Ensure that all medical records are properly stored and disposed of in accordance with the retention and destruction policy."
+      "audit_readiness_tip": "Verify that medical records are stored and disposed of in accordance with the retention policy."
     },
     "CQI1": {
-      "improvement_summary": "Develop a comprehensive quality improvement plan to collect, analyze, and implement corrective actions.",
+      "improvement_summary": "Develop and implement a quality improvement plan to collect, analyze, and act on quality indicators.",
       "required_documents": [
-        "Quality improvement plan",
-        "Data collection procedure",
-        "Analysis and corrective action procedure"
+        "Quality Improvement Plan",
+        "Indicator Tracking Sheet"
       ],
       "operational_controls": [
         "Establish a quality improvement team",
-        "Develop a data collection and analysis process",
-        "Implement corrective actions based on quality improvement data"
+        "Regularly review and analyze quality indicators"
       ],
-      "audit_readiness_tip": "Ensure that quality improvement data is regularly reviewed and acted upon to improve patient care."
+      "audit_readiness_tip": "Verify that corrective actions are taken based on quality indicator analysis."
     },
     "HRM2a": {
       "improvement_summary": "Develop and implement job descriptions and secure employee records.",
       "required_documents": [
-        "Job descriptions for all staff members",
-        "Employee records"
+        "Job Description Template",
+        "Employee Record Policy"
       ],
       "operational_controls": [
-        "Establish a job description development process",
-        "Implement a secure employee record-keeping system",
-        "Train staff on the importance of job descriptions and employee records"
+        "Create job descriptions for all staff",
+        "Secure employee records"
       ],
-      "audit_readiness_tip": "Ensure that all staff members have up-to-date job descriptions and that employee records are accurate and secure."
+      "audit_readiness_tip": "Verify that job descriptions are up-to-date and employee records are secure."
     },
     "AAC2": {
-      "improvement_summary": "Develop and implement a patient registration process that includes at least two unique identifiers.",
+      "improvement_summary": "Develop and implement a patient registration process with at least two unique identifiers.",
       "required_documents": [
-        "Patient registration process",
-        "Two unique identifiers for patient registration"
+        "Patient Registration Policy",
+        "Unique Identifier List"
       ],
       "operational_controls": [
         "Establish a patient registration process",
-        "Implement a system to track patient identifiers",
-        "Train staff on the patient registration process"
+        "Verify patient identity using two unique identifiers"
       ],
-      "audit_readiness_tip": "Ensure that all patients are properly registered and that their unique identifiers are accurately recorded."
+      "audit_readiness_tip": "Verify that patient registration is done accurately and securely."
     },
     "COP2": {
       "improvement_summary": "Develop and implement procedures for handling emergencies and medico-legal cases.",
       "required_documents": [
-        "Emergency procedure",
-        "Medico-legal case procedure"
+        "Emergency Procedure",
+        "Medico-Legal Case Handling Policy"
       ],
       "operational_controls": [
         "Establish an emergency response plan",
-        "Develop a procedure for handling medico-legal cases",
-        "Train staff on emergency and medico-legal procedures"
+        "Develop a medico-legal case handling process"
       ],
-      "audit_readiness_tip": "Ensure that all staff members are trained on emergency and medico-legal procedures to ensure patient safety."
+      "audit_readiness_tip": "Verify that emergency procedures are followed and medico-legal cases are handled appropriately."
     },
     "COP3": {
       "improvement_summary": "Develop and implement safe blood transfusion practices, including indications, consent, monitoring, and reaction reporting.",
       "required_documents": [
-        "Blood transfusion policy",
-        "Indication for blood transfusion",
-        "Consent form for blood transfusion",
-        "Monitoring and reaction reporting procedure"
+        "Blood Transfusion Policy",
+        "Monitoring and Reaction Reporting Forms"
       ],
       "operational_controls": [
-        "Establish a blood transfusion policy",
-        "Develop a procedure for obtaining consent for blood transfusion",
-        "Implement a monitoring and reaction reporting system",
-        "Train staff on blood transfusion procedures"
+        "Establish blood transfusion guidelines",
+        "Monitor patients for adverse reactions"
       ],
-      "audit_readiness_tip": "Ensure that all blood transfusions are performed in accordance with safe practices to minimize the risk of adverse reactions."
+      "audit_readiness_tip": "Verify that blood transfusions are done safely and reactions are reported promptly."
     },
     "MOM1": {
       "improvement_summary": "Develop and implement safe medication practices, including procurement, storage, prescription, and dispensing.",
       "required_documents": [
-        "Medication procurement policy",
-        "Medication storage procedure",
-        "Medication prescription policy",
-        "Medication dispensing procedure"
+        "Medication Policy",
+        "Procurement and Storage Procedures"
       ],
       "operational_controls": [
-        "Establish a medication procurement process",
-        "Implement a medication storage system",
-        "Develop a medication prescription policy",
-        "Implement a medication dispensing system",
-        "Train staff on medication procedures"
+        "Establish medication procurement and storage processes",
+        "Verify medication prescriptions and dispensing"
       ],
-      "audit_readiness_tip": "Ensure that all medications are safely procured, stored, prescribed, and dispensed to minimize the risk of medication errors."
+      "audit_readiness_tip": "Verify that medications are procured, stored, prescribed, and dispensed safely."
     },
     "HIC1": {
-      "improvement_summary": "Develop and implement infection control practices, universal precautions, and biomedical waste management.",
+      "improvement_summary": "Implement infection control practices, universal precautions, and biomedical waste management.",
       "required_documents": [
-        "Infection control manual",
-        "Universal precautions policy",
-        "Biomedical waste management procedure"
+        "Infection Control Policy",
+        "Universal Precautions Guidelines"
       ],
       "operational_controls": [
-        "Establish an infection control program",
-        "Implement universal precautions",
-        "Develop a biomedical waste management plan",
-        "Train staff on infection control practices"
+        "Establish infection control practices",
+        "Implement universal precautions"
       ],
-      "audit_readiness_tip": "Ensure that all staff members follow infection control practices and universal precautions to minimize the risk of infection."
+      "audit_readiness_tip": "Verify that infection control practices and universal precautions are followed."
     },
     "FMS1": {
       "improvement_summary": "Develop and implement plans for fire safety, emergencies, and equipment maintenance to ensure a safe environment.",
       "required_documents": [
-        "Fire safety plan",
-        "Emergency plan",
-        "Equipment maintenance procedure"
+        "Fire Safety Plan",
+        "Emergency Plan",
+        "Equipment Maintenance Schedule"
       ],
       "operational_controls": [
-        "Establish a fire safety program",
+        "Establish a fire safety plan",
         "Develop an emergency response plan",
-        "Implement an equipment maintenance schedule",
-        "Train staff on fire safety and emergency procedures"
+        "Regularly maintain equipment"
       ],
-      "audit_readiness_tip": "Ensure that all staff members are trained on fire safety and emergency procedures to ensure a safe environment."
+      "audit_readiness_tip": "Verify that fire safety, emergency, and equipment maintenance plans are in place and followed."
     }
   }
 }

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NABH Auditor Suite | Premium Compliance Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 4rem;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--primary);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 3rem;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        /* Dropzone */
+        .dropzone {
+            border: 2px dashed var(--border);
+            border-radius: 24px;
+            padding: 5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.01);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropzone:hover,
+        .dropzone.dragover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.03);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        .dropzone-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .dropzone-text p {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        /* Results Section */
+        #results-area {
+            margin-top: 4rem;
+            display: grid;
+            gap: 3rem;
+        }
+
+        .result-item {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+        }
+
+        .result-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .badge {
+            padding: 0.6rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .badge-compliant {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-partial {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .badge-non {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .compliant-dropdown {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        .compliant-dropdown summary {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--success);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .compliant-dropdown summary:hover {
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .compliant-dropdown summary::before {
+            content: '▶';
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .compliant-dropdown[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .compliant-list {
+            padding: 1.5rem 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .compliant-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .compliant-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .compliant-item p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-card .label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-card .value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        /* Suggestions Section */
+        .suggestions-container {
+            margin-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2.5rem;
+        }
+
+        .suggestion-card {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .suggestion-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .suggestion-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .suggestion-body p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .tags-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag-group h4 {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-list-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .audit-tip-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(245, 158, 11, 0.05);
+            border-left: 4px solid var(--warning);
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 25px -5px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px var(--primary-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Legend Box */
+        .legend-box {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .legend-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend-desc b {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .legend-desc {
+            font-size: 0.9rem;
+        }
+
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Loading */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            border-radius: 24px;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+            animation: fadeInOverlay 0.3s ease forwards;
+        }
+
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.05);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legend-box {
+                position: static;
+                order: -1;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tags-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
+                </svg>
+                NABH Auditor Suite
+            </div>
+            <div class="badge badge-compliant">Enterprise AI v2.1</div>
+        </header>
+
+        <div class="layout-grid">
+            <aside>
+                <div class="legend-box">
+                    <div class="legend-title">Guidance Legend</div>
+                    <div class="legend-item">
+                        <span class="legend-code">Doc:</span>
+                        <span class="legend-desc"><b>Required Documents</b><br>Necessary policies or formal records
+                            missing from SOP.</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-code">Ctrl:</span>
+                        <span class="legend-desc"><b>Operational Controls</b><br>Process changes or safety steps needed
+                            in the workflow.</span>
+                    </div>
+                </div>
+                <div id="sidebar-compliant-section"></div>
+            </aside>
+
+            <main style="width: 100%;">
+                <section id="upload-section" class="glass-card">
+                    <div class="dropzone" id="dropzone">
+                        <div class="loading-overlay" id="loading-overlay">
+                            <div class="spinner"></div>
+                            <p>AI Engine Processing...</p>
+                        </div>
+                        <div class="dropzone-text">
+                            <h3>Analyze Compliance Documents</h3>
+                            <p>Drag and drop PDF files here, or click to browse</p>
+                        </div>
+                        <input type="file" id="file-input" multiple accept="application/pdf">
+                    </div>
+                </section>
+
+                <section id="results-area"></section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const resultsArea = document.getElementById('results-area');
+
+        // Drag & Drop events
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dragover');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        dropzone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', () => handleFiles(fileInput.files));
+
+        async function handleFiles(files) {
+            if (files.length === 0) return;
+
+            loadingOverlay.classList.add('active');
+
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
+
+            try {
+                const response = await fetch('http://localhost:8000/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error('Analysis failed');
+
+                const data = await response.json();
+                renderResults(data);
+            } catch (err) {
+                alert('Error processing files: ' + err.message);
+            } finally {
+                loadingOverlay.classList.remove('active');
+            }
+        }
+
+        function humanizeReasoning(data) {
+            const trace = data.decision_trace || "";
+            if (trace.includes("Mandatory blocks satisfied")) return "Comprehensive documentary evidence for all mandatory requirements was identified in the SOP.";
+            if (trace.includes("Threshold met")) return "The quality and depth of information provided meet the expected compliance standards for this clause.";
+            if (trace.includes("All mandatory criteria satisfied")) return "Success: All core operational requirements for this clause are clearly documented and verifiable.";
+            return "Standard internal audit successfully verified. Sufficient evidence of compliance found in existing documentation.";
+        }
+
+        function renderResults(results) {
+            resultsArea.innerHTML = '';
+            const sidebarCompliant = document.getElementById('sidebar-compliant-section');
+            sidebarCompliant.innerHTML = '';
+
+            results.forEach(res => {
+                const summary = res.report_data.summary;
+                const clauses = res.report_data.clauses || {};
+                const status = summary.non_compliant > 0 ? 'NON_COMPLIANT' : (summary.partial > 0 ? 'PARTIAL' : 'COMPLIANT');
+                const badgeClass = status === 'COMPLIANT' ? 'badge-compliant' : (status === 'PARTIAL' ? 'badge-partial' : 'badge-non');
+
+                const card = document.createElement('div');
+                card.className = 'glass-card result-item';
+                const suggestionsHtml = getSuggestionsHtml(res.report_data.llm_suggestions || {});
+
+                // Move compliant clauses to sidebar
+                const compliantClauses = Object.entries(clauses).filter(([id, data]) => data.status === 'COMPLIANT');
+                if (compliantClauses.length > 0) {
+                    const sideBox = document.createElement('div');
+                    sideBox.className = 'legend-box';
+                    sideBox.style.borderColor = 'var(--success)';
+                    sideBox.innerHTML = `
+                        <div class="legend-title" style="color:var(--success)">Compliant Clauses: ${res.filename}</div>
+                        <div class="compliant-list" style="padding: 0">
+                            ${compliantClauses.map(([id, data]) => `
+                                <details style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
+                                    <summary style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); cursor: pointer; list-style: none;">
+                                        ${id} <span style="font-size: 10px; opacity: 0.5;">▼</span>
+                                    </summary>
+                                    <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; line-height: 1.4;">
+                                        ${humanizeReasoning(data)}
+                                    </p>
+                                </details>
+                            `).join('')}
+                        </div>
+                    `;
+                    sidebarCompliant.appendChild(sideBox);
+                }
+
+                card.innerHTML = `
+                    <div class="result-header">
+                        <h2>Analysis: ${res.filename}</h2>
+                        <span class="badge ${badgeClass}">${status.replace('_', ' ')}</span>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card"><span class="label">Compliance Score</span><span class="value">${((summary.compliant / summary.total_clauses) * 100).toFixed(1)}%</span></div>
+                        <div class="stat-card"><span class="label">Non-Compliant</span><span class="value" style="color:var(--danger)">${summary.non_compliant}</span></div>
+                        <div class="stat-card"><span class="label">Partial</span><span class="value" style="color:var(--warning)">${summary.partial}</span></div>
+                        <div class="stat-card"><span class="label">Compliant</span><span class="value" style="color:var(--success)">${summary.compliant}</span></div>
+                        <div class="stat-card"><span class="label">Total Clauses</span><span class="value">${summary.total_clauses}</span></div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <a href="http://localhost:8000${res.pdf_url}" target="_blank" class="btn btn-primary">Download Audit Report (PDF)</a>
+                        <a href="http://localhost:8000${res.json_url}" target="_blank" class="btn btn-outline">Download JSON</a>
+                    </div>
+
+                    ${suggestionsHtml ? `
+                    <div class="suggestions-container">
+                        <h3 style="margin-bottom:2rem; font-size: 1.5rem;">Improvement Roadmap</h3>
+                        ${suggestionsHtml}
+                    </div>` : ''}
+                `;
+
+                resultsArea.appendChild(card);
+            });
+        }
+
+        function getSuggestionsHtml(suggestions) {
+            return Object.entries(suggestions).map(([cid, sug]) => `
+                <div class="suggestion-card">
+                    <div class="suggestion-header">
+                        <span>${cid} Compliance Guidance</span>
+                    </div>
+                    <div class="suggestion-body">
+                        <p>${sug.improvement_summary}</p>
+                        <div class="tags-list">
+                            <div class="tag-group">
+                                <h4>Required Documentation</h4>
+                                <div class="tag-list-inner">
+                                    ${sug.required_documents.map(d => `<span class="tag">Doc: ${d}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div class="tag-group">
+                                <h4>Operational Controls</h4>
+                                <div class="tag-list-inner">
+                                    ${sug.operational_controls.map(c => `<span class="tag">Ctrl: ${c}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        ${sug.audit_readiness_tip ? `
+                        <div class="audit-tip-box">
+                            <b>Audit Readiness:</b> ${sug.audit_readiness_tip}
+                        </div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>

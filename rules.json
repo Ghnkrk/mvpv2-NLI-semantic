@@ -9,7 +9,11 @@
                 "weight": 0.4,
                 "signals": [
                     "confidentiality",
-                    "privacy of records"
+                    "privacy of records",
+                    "patient confidentiality",
+                    "confidential patient information",
+                    "privacy and confidentiality",
+                    "confidential medical records"
                 ]
             },
             "access_control_procedure": {
@@ -18,7 +22,13 @@
                 "signals": [
                     "authorized access",
                     "role based access",
-                    "restricted access"
+                    "restricted access",
+                    "role based access control",
+                    "access privileges",
+                    "access restricted to authorized personnel",
+                    "access rights defined",
+                    "user access control",
+                    "controlled access to records"
                 ]
             },
             "security_controls": {
@@ -28,7 +38,12 @@
                     "data security",
                     "physical security",
                     "electronic medical records",
-                    "password protection"
+                    "password protection",
+                    "access privileges",
+                    "access restricted to authorized personnel",
+                    "access rights defined",
+                    "user access control",
+                    "controlled access to records"
                 ]
             }
         },
@@ -79,7 +94,11 @@
                 "signals": [
                     "quality indicator",
                     "parameter to be monitored",
-                    "indicator"
+                    "indicator",
+                    "key performance indicator",
+                    "kpi",
+                    "performance indicator",
+                    "quality metric"
                 ]
             },
             "data_collection": {
@@ -88,7 +107,12 @@
                 "signals": [
                     "data collection",
                     "monitoring",
-                    "measurement"
+                    "measurement",
+                    "data is collected",
+                    "data is gathered",
+                    "data collection mechanism",
+                    "structured data collection",
+                    "indicator data recorded"
                 ]
             },
             "analysis": {
@@ -97,7 +121,12 @@
                 "signals": [
                     "analysis",
                     "review",
-                    "evaluation"
+                    "evaluation",
+                    "data is collected",
+                    "data is gathered",
+                    "data collection mechanism",
+                    "structured data collection",
+                    "indicator data recorded"
                 ]
             },
             "corrective_action": {
@@ -106,7 +135,11 @@
                 "signals": [
                     "corrective action",
                     "preventive action",
-                    "improvement"
+                    "improvement",
+                    "action plan",
+                    "corrective measures",
+                    "preventive measures",
+                    "quality improvement action"
                 ]
             }
         },
@@ -127,7 +160,11 @@
                 "signals": [
                     "job description",
                     "defined roles",
-                    "responsibilities of staff"
+                    "responsibilities of staff",
+                    "roles and responsibilities",
+                    "role definition",
+                    "duties and responsibilities",
+                    "staff responsibilities documented"
                 ]
             },
             "employee_records": {
@@ -137,7 +174,11 @@
                     "employee record",
                     "staff file",
                     "qualification document",
-                    "leave record"
+                    "leave record",
+                    "roles and responsibilities",
+                    "role definition",
+                    "duties and responsibilities",
+                    "staff responsibilities documented"
                 ]
             },
             "grievance_mechanism": {
@@ -167,7 +208,12 @@
                 "signals": [
                     "registration process",
                     "admission process",
-                    "documented registration"
+                    "documented registration",
+                    "patient registration",
+                    "admission workflow",
+                    "registration workflow",
+                    "registration procedure",
+                    "admission procedure"
                 ]
             },
             "two_identifiers": {
@@ -176,7 +222,12 @@
                 "signals": [
                     "two identifiers",
                     "unique id number",
-                    "patient identification"
+                    "patient identification",
+                    "two patient identifiers",
+                    "patient identity verification",
+                    "verified using two identifiers",
+                    "unique hospital id",
+                    "hospital identification number"
                 ]
             },
             "admission_time_defined": {
@@ -185,7 +236,11 @@
                 "signals": [
                     "expected time for registration",
                     "admission time defined",
-                    "time for admission"
+                    "time for admission",
+                    "patient identity verification",
+                    "verified using two identifiers",
+                    "unique hospital id",
+                    "hospital identification number"
                 ]
             }
         },
@@ -206,7 +261,11 @@
                 "signals": [
                     "emergency services procedure",
                     "documented emergency procedure",
-                    "emergency protocol"
+                    "emergency protocol",
+                    "emergency management protocol",
+                    "emergency management system",
+                    "triage protocol",
+                    "emergency response procedure"
                 ]
             },
             "mlc_handling": {
@@ -215,7 +274,10 @@
                 "signals": [
                     "medico legal case",
                     "mlc handling",
-                    "legal case procedure"
+                    "legal case procedure",
+                    "medico legal documentation",
+                    "mlc documentation",
+                    "legal reporting procedure"
                 ]
             },
             "ambulance_procedure": {
@@ -245,7 +307,12 @@
                 "signals": [
                     "indication for transfusion",
                     "use of blood components",
-                    "blood transfusion indication"
+                    "blood transfusion indication",
+                    "indications for blood transfusion",
+                    "clinical indications defined",
+                    "criteria for transfusion",
+                    "transfusion criteria",
+                    "indications are documented"
                 ]
             },
             "consent_obtained": {
@@ -254,7 +321,12 @@
                 "signals": [
                     "blood transfusion consent",
                     "informed consent for transfusion",
-                    "consent obtained"
+                    "consent obtained",
+                    "informed consent for blood transfusion",
+                    "clinical indications defined",
+                    "criteria for transfusion",
+                    "transfusion criteria",
+                    "indications are documented"
                 ]
             },
             "monitoring_documented": {
@@ -263,7 +335,10 @@
                 "signals": [
                     "transfusion monitoring",
                     "vitals during transfusion",
-                    "monitoring of transfusion"
+                    "monitoring of transfusion",
+                    "patient monitored during transfusion",
+                    "monitoring at defined intervals",
+                    "vital parameters recorded"
                 ]
             },
             "reaction_reporting": {
@@ -272,7 +347,10 @@
                 "signals": [
                     "adverse transfusion reaction",
                     "reaction reporting",
-                    "reporting of blood reaction"
+                    "reporting of blood reaction",
+                    "transfusion reaction reported",
+                    "reaction documented",
+                    "reaction escalation procedure"
                 ]
             }
         },
@@ -292,7 +370,11 @@
                 "signals": [
                     "procurement of medication",
                     "purchase of medication",
-                    "pharmacy procurement"
+                    "pharmacy procurement",
+                    "medications are procured",
+                    "drugs are procured",
+                    "approved vendor purchase",
+                    "drug purchase process"
                 ]
             },
             "storage": {
@@ -301,7 +383,11 @@
                 "signals": [
                     "storage of medication",
                     "drug storage",
-                    "medication storage"
+                    "medication storage",
+                    "medications are procured",
+                    "drugs are procured",
+                    "approved vendor purchase",
+                    "drug purchase process"
                 ]
             },
             "prescription": {
@@ -310,7 +396,10 @@
                 "signals": [
                     "prescription of medication",
                     "doctor orders medication",
-                    "medication prescription"
+                    "medication prescription",
+                    "prescribed by authorized doctor",
+                    "medical prescription",
+                    "physician order"
                 ]
             },
             "dispensing": {
@@ -319,7 +408,10 @@
                 "signals": [
                     "dispensing of medication",
                     "medication dispensed",
-                    "pharmacy dispensing"
+                    "pharmacy dispensing",
+                    "dispensed by pharmacy staff",
+                    "dispensing record maintained",
+                    "medication issued"
                 ]
             }
         },
@@ -339,7 +431,10 @@
                 "signals": [
                     "infection control manual",
                     "infection control program",
-                    "documented infection control"
+                    "documented infection control",
+                    "infection prevention manual",
+                    "infection prevention program",
+                    "infection control committee"
                 ]
             },
             "universal_precautions": {
@@ -348,7 +443,10 @@
                 "signals": [
                     "universal precautions",
                     "hand hygiene",
-                    "disinfection and sterilization"
+                    "disinfection and sterilization",
+                    "infection prevention manual",
+                    "infection prevention program",
+                    "infection control committee"
                 ]
             },
             "bmw_management": {
@@ -357,7 +455,11 @@
                 "signals": [
                     "biomedical waste management",
                     "bmw management",
-                    "waste disposal as per rules"
+                    "waste disposal as per rules",
+                    "biomedical waste segregation",
+                    "waste segregation",
+                    "waste handling as per regulations",
+                    "bio medical waste disposal"
                 ]
             }
         },
@@ -378,7 +480,10 @@
                 "signals": [
                     "fire safety plan",
                     "fire detection system",
-                    "fire safety procedure"
+                    "fire safety procedure",
+                    "fire detection and alarm system",
+                    "fire evacuation procedure",
+                    "fire prevention plan"
                 ]
             },
             "emergency_plan": {
@@ -387,7 +492,10 @@
                 "signals": [
                     "emergency response plan",
                     "emergency preparedness",
-                    "disaster management plan"
+                    "disaster management plan",
+                    "fire detection and alarm system",
+                    "fire evacuation procedure",
+                    "fire prevention plan"
                 ]
             },
             "equipment_maintenance": {
@@ -396,7 +504,10 @@
                 "signals": [
                     "equipment maintenance plan",
                     "preventive maintenance",
-                    "breakdown maintenance"
+                    "breakdown maintenance",
+                    "fire detection and alarm system",
+                    "fire evacuation procedure",
+                    "fire prevention plan"
                 ]
             }
         },

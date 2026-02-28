@@ -31,7 +31,7 @@ def evaluate_clause(clause: dict, text: str, sentences: list[str]) -> dict:
         signals = block["signals"]
 
         # --- Step 1: Exact matching ---
-        exact_score, exact_signals = compute_block_score(text, signals)
+        exact_score, exact_signals = compute_block_score(sentences, signals)
         exact_snippets = extract_snippets(sentences, exact_signals)
 
         exact_scores[name] = exact_score
@@ -125,6 +125,7 @@ def evaluate_clause(clause: dict, text: str, sentences: list[str]) -> dict:
         "semantic_only_blocks": semantic_only_blocks,
         "block_details": block_details,
         "decision_trace": decision_trace,
+        "intent": intent,
     }
 
 

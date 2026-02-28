@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import json
 from datetime import datetime
 
 from engine.loader import load_rules
@@ -8,6 +9,7 @@ from engine.matcher import normalize_text, split_sentences
 from engine.evaluator import evaluate_clause
 from engine.pdf_reader import extract_text_from_pdf, get_pdfs_from_folder
 from engine.report import generate_report, generate_pdf_report
+from engine.llm_suggester import generate_suggestions
 
 
 INPUT_FOLDER = "checkPdf"
@@ -132,10 +134,20 @@ def main():
             print_debug(results, filename)
 
         # JSON report
-        json_str = generate_report(results)
+        report_json_str = generate_report(results)
+        report_data = json.loads(report_json_str)
+
+        # Generate LLM Suggestions (Phases 6 & 8)
+        print(f"  ✨ Generating AI suggestions...")
+        suggestions = generate_suggestions(report_data)
+        report_data["llm_suggestions"] = suggestions
+
+        # Re-serialize with suggestions
+        final_json_str = json.dumps(report_data, indent=2)
+        
         json_out = os.path.join(OUTPUT_FOLDER, f"{stem}_report.json")
         with open(json_out, "w") as f:
-            f.write(json_str)
+            f.write(final_json_str)
         print(f"  ✓ JSON report → {json_out}")
 
         # PDF report

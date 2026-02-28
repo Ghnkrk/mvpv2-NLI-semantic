@@ -34,6 +34,7 @@ def generate_report(results: dict) -> str:
             "semantic_matches": result.get("semantic_matches", {}),
             "semantic_only_blocks": result.get("semantic_only_blocks", []),
             "decision_trace": result.get("decision_trace", ""),
+            "intent": result.get("intent", ""),
         }
 
     report["summary"] = {
@@ -129,9 +130,10 @@ def generate_pdf_report(
     results: dict,
     source_filename: str,
     output_path: str,
+    suggestions: dict = None,
 ) -> str:
     """
-    Generate a professional PDF gap report.
+    Generate a professional PDF gap report with optional AI suggestions.
 
     Returns the output_path written to.
     """
@@ -288,6 +290,43 @@ def generate_pdf_report(
                         ))
 
         story.append(Spacer(1, 3 * mm))
+
+    # --- Consultant Suggestions ---
+    if suggestions:
+        story.append(HRFlowable(
+            width="100%", thickness=1, color=colors.HexColor("#2c3e50")
+        ))
+        story.append(Paragraph("Consultant Recommendations", ss["SectionHead"]))
+        story.append(Paragraph(
+            "The following actionable improvements are suggested based on the gaps identified above.",
+            ss["Body"]
+        ))
+        story.append(Spacer(1, 4 * mm))
+
+        for cid, sug in suggestions.items():
+            if not sug or "improvement_summary" not in sug:
+                continue
+                
+            story.append(Paragraph(f"<b>{cid} Improvement Plan</b>", ss["ClauseHead"]))
+            story.append(Paragraph(sug["improvement_summary"], ss["Body"]))
+            
+            if sug.get("required_documents"):
+                story.append(Paragraph("<i>Required Documents:</i>", ss["Body"]))
+                for doc_item in sug["required_documents"]:
+                    story.append(Paragraph(f"\u2022 {doc_item}", ss["Body"], bulletText="\u2022"))
+            
+            if sug.get("operational_controls"):
+                story.append(Paragraph("<i>Operational Controls:</i>", ss["Body"]))
+                for control in sug["operational_controls"]:
+                    story.append(Paragraph(f"\u2022 {control}", ss["Body"]))
+            
+            if sug.get("audit_readiness_tip"):
+                story.append(Paragraph(
+                    f'<b>Audit Tip:</b> {sug["audit_readiness_tip"]}', 
+                    ss["TraceText"]
+                ))
+            
+            story.append(Spacer(1, 4 * mm))
 
     doc.build(story)
     return output_path
