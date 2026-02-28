@@ -88,6 +88,17 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ---
 
+## 🧪 Testing with Samples
+
+To test the hybrid engine's performance across different document qualities, you can use the sample files provided in the `checkPdf/` folder:
+
+1. **`strong-doc-10clauses.pdf`**: A high-quality document designed to pass majority of audit checks.
+2. **`weak-doc-10clauses.pdf`**: A document with minimal evidence, designed to trigger the "Missing" or "Partial" logic.
+
+Simply drag and drop these into the web dashboard to see the real-time gap analysis and AI-powered roadmap.
+
+---
+
 ## ⚠️ Limits & Constraints
 
 - **Lexical Threshold (0.6)**: The engine requires a majority token overlap. Sub-60% matches are ignored by the exact layer.
@@ -103,7 +114,8 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser.
 - `engine/`: The core compliance brain (Matcher, Evaluator, Semantic, Suggestions).
 - `frontend/`: Premium glassmorphism web dashboard.
 - `rules.json`: The deterministic "NABH Rulebook" with signals and archetypes.
-- `reports/`: Storage for generated JSON and PDF outputs.
+- `checkPdf/`: Contains **Input Samples** for testing the engine (e.g., `strong-doc-10clauses.pdf`).
+- `reports/`: Storage for **Generated Outputs** (JSON and PDF reports).
 
 ---
 
