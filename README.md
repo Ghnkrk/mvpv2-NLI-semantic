@@ -74,6 +74,7 @@ echo "GROQ_API_KEY=your_key_here" > .env
 ### Running the Application
 ```bash
 # Start the FastAPI server (Backend + Frontend)
+# If didn't turn on, try without --reload flag
 uv run uvicorn api.main:app --reload
 ```
 Open **[http://localhost:8000](http://localhost:8000)** in your browser.
